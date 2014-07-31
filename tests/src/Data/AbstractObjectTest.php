@@ -45,8 +45,8 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @return void
      */
     public function test_getRecord() {
-        $store = $this->object->getRecord();
-        $this->assertInstanceOf('\Flex\Data\Record', $store);
+        $record = $this->object->getRecord();
+        $this->assertInstanceOf('\Flex\Data\Record', $record);
     }
 
     /**
@@ -162,17 +162,17 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @return void
      */
-    public function test_isStored() {
+    public function test_isSaved() {
         $values = array(
             'id' => 1,
             'nickname' => 'foo'
         );
 
         $object = new AbstractObjectTestObject($values, false);
-        $this->assertEquals(false, $object->isStored());
+        $this->assertEquals(false, $object->isSaved());
 
-        $object->setStored(true);
-        $this->assertEquals(true, $object->isStored());
+        $object->setSaved(true);
+        $this->assertEquals(true, $object->isSaved());
     }
 
     /**

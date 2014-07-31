@@ -19,35 +19,35 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     /**
      * @var bool
      */
-    private $stored;
+    private $saved;
 
     /**
      * @param array $data
-     * @param bool $stored
+     * @param bool $saved
      */
-    public function __construct(array $data = null, $stored = false) {
+    public function __construct(array $data = null, $saved = false) {
         $defaults = array('id' => null);
 
         $data = array_merge($defaults, (array) $data);
 
         $this->record = new Record($data);
 
-        $this->setStored($stored);
+        $this->setSaved($saved);
         $this->init();
     }
 
     /**
-     * @param bool $storeable
+     * @param bool $saved
      */
-    public function setStored($storeable) {
-        $this->stored = $storeable;
+    public function setSaved($saved) {
+        $this->saved = $saved;
     }
 
     /**
      * @return bool
      */
-    public function isStored() {
-        return $this->stored;
+    public function isSaved() {
+        return $this->saved;
     }
 
     /**
