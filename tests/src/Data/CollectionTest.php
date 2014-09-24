@@ -12,9 +12,9 @@ use Flex\Data\Collection;
 class CollectionTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @return void
+     * @test
      */
-    public function test_construct() {
+    public function construct() {
         $collectionData = array(
             'foo',
             'bar'
@@ -28,9 +28,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_elements() {
+    public function elements() {
         $collectionData = array(
             'foo',
             'bar'
@@ -43,9 +43,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_addElement() {
+    public function addElement() {
         $data = 'element';
 
         $collection = new Collection();
@@ -58,9 +58,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_totalCount() {
+    public function totalCount() {
         $collection = new Collection();
         $collection->setTotalCount(2);
 
@@ -68,9 +68,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_countable() {
+    public function countable() {
         $collectionData = array(
             'foo',
             'bar'
@@ -81,9 +81,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_arrayAccess() {
+    public function arrayAccess() {
         $collectionData = array(
             'foo',
             'bar'
@@ -108,9 +108,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_toArray() {
+    public function toArray() {
         $object1 = new CollectionTestObject();
         $object2 = new CollectionTestObject();
 
@@ -137,9 +137,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_toJson() {
+    public function toJson() {
         $object1 = new CollectionTestObject();
         $object2 = new CollectionTestObject();
 
@@ -165,9 +165,9 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_iterator() {
+    public function iterator() {
         $collectionData = array(
             'foo',
             'bar',

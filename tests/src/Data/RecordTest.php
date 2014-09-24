@@ -12,9 +12,9 @@ use Flex\Data\Record;
 class RecordTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @return void
+     * @test
      */
-    public function test_constructor_emptyData() {
+    public function constructorEmptyData() {
         $storage = new Record();
         $storage->nickname = 'foo';
 
@@ -22,9 +22,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_constructor_withData() {
+    public function constructorWithData() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -33,17 +33,17 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_constructor_emptyDataDirty() {
+    public function constructorEmptyDataDirty() {
         $storage = new Record();
         $this->assertEquals(false, $storage->isDirty());
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_constructor_withDataDirty() {
+    public function constructorWithDataDirty() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -52,9 +52,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_isDirty() {
+    public function isDirty() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -66,9 +66,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getNotExistingProperty() {
+    public function getNotExistingProperty() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -78,9 +78,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getData() {
+    public function getData() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -92,9 +92,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getChanges() {
+    public function getChanges() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -110,9 +110,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getValue() {
+    public function getValue() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -122,9 +122,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getValue_notExisting() {
+    public function getValueNotExisting() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -134,9 +134,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_setDirty() {
+    public function setDirty() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -154,9 +154,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_sleep() {
+    public function sleep() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));
@@ -170,9 +170,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_unsetProperty() {
+    public function unsetProperty() {
         $storage = new Record(array(
             'nickname' => 'foo'
         ));

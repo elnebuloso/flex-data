@@ -42,17 +42,17 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getRecord() {
+    public function getRecord() {
         $record = $this->object->getRecord();
         $this->assertInstanceOf('\Flex\Data\Record', $record);
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_isDirty() {
+    public function isDirty() {
         $this->assertEquals(false, $this->object->isDirty());
         $this->object->setNickname('bar');
         $this->assertEquals(true, $this->object->isDirty());
@@ -62,9 +62,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_sleep() {
+    public function sleep() {
         $data = $this->object->__sleep();
         $this->assertEquals(array(
             'record'
@@ -72,9 +72,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_wakeup() {
+    public function wakeup() {
         $mockMethods = array(
             'init'
         );
@@ -86,30 +86,32 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @test
      * @expectedException \Exception
      */
-    public function test_getPropertyNotExisting() {
+    public function getPropertyNotExisting() {
         $this->object->lastname;
     }
 
     /**
+     * @test
      * @expectedException \Exception
      */
-    public function test_setPropertyNotExisting() {
+    public function setPropertyNotExisting() {
         $this->object->lastname = 'foo';
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_toArray() {
+    public function toArray() {
         $this->assertEquals($this->values, $this->object->toArray());
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_toArrayWithToArrayInterfaceObject() {
+    public function toArrayWithToArrayInterfaceObject() {
         $expected = array(
             'id' => 1,
             'name' => 'foo',
@@ -133,9 +135,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_toJsonWithToJsonInterfaceObject() {
+    public function toJsonWithToJsonInterfaceObject() {
         $expected = array(
             'id' => 1,
             'name' => 'foo',
@@ -160,9 +162,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_isSaved() {
+    public function isSaved() {
         $values = array(
             'id' => 1,
             'nickname' => 'foo'
@@ -176,9 +178,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_id() {
+    public function setId() {
         $object = new AbstractObjectTestObject(array(), false);
         $this->assertEquals(null, $object->getId());
 

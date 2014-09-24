@@ -13,9 +13,9 @@ use Flex\Data\AbstractObjectCollection;
 class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getObjects() {
+    public function getObjects() {
         $mockMethods = array(
             'getElements'
         );
@@ -26,9 +26,9 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_setObjects() {
+    public function setObjects() {
         $mockMethods = array(
             'setElements'
         );
@@ -39,9 +39,9 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_addObject() {
+    public function addObject() {
         $mockMethods = array(
             'addElement'
         );
@@ -57,9 +57,9 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return void
+     * @test
      */
-    public function test_getAdditional() {
+    public function getAdditional() {
         $object = new AbstractObjectCollectionTestObject(array(
             'id' => 1,
             'nickname' => 'foo'
