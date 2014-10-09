@@ -13,7 +13,7 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     /**
      * @var Record
      */
-    private $record;
+    protected $record;
 
     /**
      * @param array $data
