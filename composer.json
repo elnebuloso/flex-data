@@ -2,7 +2,7 @@
     "name": "elnebuloso\/flex-data",
     "type": "library",
     "license": "MIT",
-    "description": "data modeling, data providers",
+    "description": "data modeling",
     "keywords": [
         "data"
     ],

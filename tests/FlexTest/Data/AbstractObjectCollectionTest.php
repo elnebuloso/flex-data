@@ -7,7 +7,6 @@ use Flex\Data\AbstractObjectCollection;
 /**
  * Class AbstractObjectCollectionTest
  *
- * @package FlexTest\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
@@ -52,34 +51,15 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
             'nickname' => 'foo'
         ));
 
-        $collection->expects($this->once())->method('addElement')->with($object, 1);
+        $collection->expects($this->once())->method('addElement')->with($object);
         $collection->addObject($object);
-    }
-
-    /**
-     * @test
-     */
-    public function getAdditional() {
-        $object = new AbstractObjectCollectionTestObject(array(
-            'id' => 1,
-            'nickname' => 'foo'
-        ));
-
-        $collection = new AbstractObjectCollectionTestCollection();
-        $collection->addObject($object, array(
-            'additional_foo'
-        ));
-
-        $this->assertEquals(array(
-            'additional_foo'
-        ), $collection->getAdditional($object));
     }
 }
 
 /**
  * Class AbstractObjectCollectionTestCollection
  *
- * @package FlexTest\Data
+ * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class AbstractObjectCollectionTestCollection extends AbstractObjectCollection {
 
@@ -88,7 +68,7 @@ class AbstractObjectCollectionTestCollection extends AbstractObjectCollection {
 /**
  * Class AbstractObjectCollectionTestObject
  *
- * @package FlexTest\Data
+ * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class AbstractObjectCollectionTestObject extends AbstractObject {
 

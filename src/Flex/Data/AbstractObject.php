@@ -6,7 +6,6 @@ use Exception;
 /**
  * Class AbstractObject
  *
- * @package Flex\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
@@ -17,37 +16,11 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     private $record;
 
     /**
-     * @var bool
-     */
-    private $saved;
-
-    /**
      * @param array $data
-     * @param bool $saved
      */
-    public function __construct(array $data = null, $saved = false) {
-        $defaults = array('id' => null);
-
-        $data = array_merge($defaults, (array) $data);
-
+    public function __construct(array $data = array()) {
         $this->record = new Record($data);
-
-        $this->setSaved($saved);
         $this->init();
-    }
-
-    /**
-     * @param bool $saved
-     */
-    public function setSaved($saved) {
-        $this->saved = $saved;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSaved() {
-        return $this->saved;
     }
 
     /**
@@ -129,19 +102,5 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
      */
     public function toJson() {
         return json_encode($this->toArray());
-    }
-
-    /**
-     * @return mixed the primary key
-     */
-    public function getId() {
-        return $this->record->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id) {
-        $this->record->id = $id;
     }
 }

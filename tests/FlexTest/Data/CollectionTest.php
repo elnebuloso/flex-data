@@ -6,7 +6,6 @@ use Flex\Data\Collection;
 /**
  * Class CollectionTest
  *
- * @package FlexTest\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class CollectionTest extends \PHPUnit_Framework_TestCase {
@@ -203,7 +202,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
 /**
  * Class CollectionTestObject
  *
- * @package FlexTest\Data
+ * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class CollectionTestObject extends Collection {
 

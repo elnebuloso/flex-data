@@ -6,7 +6,6 @@ use Flex\Data\AbstractObject;
 /**
  * Class AbstractObjectTest
  *
- * @package FlexTest\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
@@ -28,7 +27,6 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
         parent::setUp();
 
         $this->values = array(
-            'id' => 1,
             'nickname' => 'foo'
         );
         $this->object = new AbstractObjectTestObject($this->values);
@@ -80,7 +78,6 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
         );
 
         $object = $this->getMockBuilder('Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
-
         $object->expects($this->once())->method('init');
         $object->__wakeup();
     }
@@ -113,20 +110,16 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      */
     public function toArrayWithToArrayInterfaceObject() {
         $expected = array(
-            'id' => 1,
             'name' => 'foo',
             'user' => array(
-                'id' => 2,
                 'name' => 'bar'
             )
         );
 
         $foo = new TestUser();
-        $foo->setId(1);
         $foo->setName('foo');
 
         $bar = new TestUser();
-        $bar->setId(2);
         $bar->setName('bar');
 
         $foo->setUser($bar);
@@ -139,61 +132,29 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      */
     public function toJsonWithToJsonInterfaceObject() {
         $expected = array(
-            'id' => 1,
             'name' => 'foo',
             'user' => array(
-                'id' => 2,
                 'name' => 'bar'
             )
         );
         $expected = json_encode($expected);
 
         $foo = new TestUser();
-        $foo->setId(1);
         $foo->setName('foo');
 
         $bar = new TestUser();
-        $bar->setId(2);
         $bar->setName('bar');
 
         $foo->setUser($bar);
 
         $this->assertEquals($expected, $foo->toJson());
     }
-
-    /**
-     * @test
-     */
-    public function isSaved() {
-        $values = array(
-            'id' => 1,
-            'nickname' => 'foo'
-        );
-
-        $object = new AbstractObjectTestObject($values, false);
-        $this->assertEquals(false, $object->isSaved());
-
-        $object->setSaved(true);
-        $this->assertEquals(true, $object->isSaved());
-    }
-
-    /**
-     * @test
-     */
-    public function setId() {
-        $object = new AbstractObjectTestObject(array(), false);
-        $this->assertEquals(null, $object->getId());
-
-        $expected = uniqid();
-        $object->setId($expected);
-        $this->assertEquals($expected, $object->getId());
-    }
 }
 
 /**
  * Class AbstractObjectTestObject
  *
- * @package FlexTest\Data
+ * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class AbstractObjectTestObject extends AbstractObject {
 
@@ -215,7 +176,7 @@ class AbstractObjectTestObject extends AbstractObject {
 /**
  * Class TestUser
  *
- * @package FlexTest\Data
+ * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class TestUser extends AbstractObject {
 

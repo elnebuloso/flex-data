@@ -4,7 +4,6 @@ namespace Flex\Data;
 /**
  * Class Collection
  *
- * @package Flex\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class Collection implements \Iterator, \ArrayAccess, \Countable, ToArrayInterface, ToJsonInterface {

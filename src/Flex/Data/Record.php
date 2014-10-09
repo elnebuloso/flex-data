@@ -6,7 +6,6 @@ use stdClass;
 /**
  * Class Record
  *
- * @package Flex\Data
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class Record extends stdClass {
