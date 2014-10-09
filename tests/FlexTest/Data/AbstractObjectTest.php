@@ -16,7 +16,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     private $values;
 
     /**
-     * @var AbstractObjectTestObject
+     * @var AbstractObjectTest_Object
      */
     private $object;
 
@@ -24,19 +24,11 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @return void
      */
     public function setUp() {
-        parent::setUp();
-
         $this->values = array(
             'nickname' => 'foo'
         );
-        $this->object = new AbstractObjectTestObject($this->values);
-    }
 
-    /**
-     * @return void
-     */
-    public function tearDown() {
-        parent::tearDown();
+        $this->object = new AbstractObjectTest_Object($this->values);
     }
 
     /**
@@ -116,10 +108,10 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
             )
         );
 
-        $foo = new TestUser();
+        $foo = new AbstractObjectTest_User();
         $foo->setName('foo');
 
-        $bar = new TestUser();
+        $bar = new AbstractObjectTest_User();
         $bar->setName('bar');
 
         $foo->setUser($bar);
@@ -139,10 +131,10 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
         );
         $expected = json_encode($expected);
 
-        $foo = new TestUser();
+        $foo = new AbstractObjectTest_User();
         $foo->setName('foo');
 
-        $bar = new TestUser();
+        $bar = new AbstractObjectTest_User();
         $bar->setName('bar');
 
         $foo->setUser($bar);
@@ -151,12 +143,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     }
 }
 
-/**
- * Class AbstractObjectTestObject
- *
- * @author Jeff Tunessen <jeff.tunessen@gmail.com>
- */
-class AbstractObjectTestObject extends AbstractObject {
+class AbstractObjectTest_Object extends AbstractObject {
 
     /**
      * @return string
@@ -173,12 +160,7 @@ class AbstractObjectTestObject extends AbstractObject {
     }
 }
 
-/**
- * Class TestUser
- *
- * @author Jeff Tunessen <jeff.tunessen@gmail.com>
- */
-class TestUser extends AbstractObject {
+class AbstractObjectTest_User extends AbstractObject {
 
     /**
      * @return string

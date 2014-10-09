@@ -110,8 +110,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
      * @test
      */
     public function toArray() {
-        $object1 = new CollectionTestObject();
-        $object2 = new CollectionTestObject();
+        $object1 = new CollectionTest_Collection();
+        $object2 = new CollectionTest_Collection();
 
         $collectionData = array(
             $object1,
@@ -139,8 +139,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
      * @test
      */
     public function toJson() {
-        $object1 = new CollectionTestObject();
-        $object2 = new CollectionTestObject();
+        $object1 = new CollectionTest_Collection();
+        $object2 = new CollectionTest_Collection();
 
         $collectionData = array(
             $object1,
@@ -199,12 +199,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     }
 }
 
-/**
- * Class CollectionTestObject
- *
- * @author Jeff Tunessen <jeff.tunessen@gmail.com>
- */
-class CollectionTestObject extends Collection {
+class CollectionTest_Collection extends Collection {
 
     /**
      * @return array

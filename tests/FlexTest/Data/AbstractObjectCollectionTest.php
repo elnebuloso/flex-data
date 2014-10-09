@@ -46,7 +46,7 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
         );
 
         $collection = $this->getMockBuilder('Flex\Data\AbstractObjectCollection')->setMethods($mockMethods)->getMockForAbstractClass();
-        $object = new AbstractObjectCollectionTestObject(array(
+        $object = new AbstractObjectCollectionTest_Object(array(
             'id' => 1,
             'nickname' => 'foo'
         ));
@@ -56,21 +56,11 @@ class AbstractObjectCollectionTest extends \PHPUnit_Framework_TestCase {
     }
 }
 
-/**
- * Class AbstractObjectCollectionTestCollection
- *
- * @author Jeff Tunessen <jeff.tunessen@gmail.com>
- */
-class AbstractObjectCollectionTestCollection extends AbstractObjectCollection {
+class AbstractObjectCollectionTest_Collection extends AbstractObjectCollection {
 
 }
 
-/**
- * Class AbstractObjectCollectionTestObject
- *
- * @author Jeff Tunessen <jeff.tunessen@gmail.com>
- */
-class AbstractObjectCollectionTestObject extends AbstractObject {
+class AbstractObjectCollectionTest_Object extends AbstractObject {
 
     /**
      * @return mixed
