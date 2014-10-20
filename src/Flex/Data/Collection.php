@@ -56,6 +56,18 @@ class Collection implements \Iterator, \ArrayAccess, \Countable, ToArrayInterfac
 
     /**
      * @param mixed $id
+     * @return null
+     */
+    public function getElement($id) {
+        if(array_key_exists($id, $this->elements)) {
+            return $this->elements[$id];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param mixed $id
      */
     public function removeElement($id) {
         if(array_key_exists($id, $this->elements)) {
