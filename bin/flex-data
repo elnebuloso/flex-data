@@ -1,0 +1,53 @@
+#!/usr/bin/env php
+<?php
+use Flex\Data\ModelGenerator\Entity;use Flex\Data\ModelGenerator\Entity\Field;
+
+// error reporting
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 'on');
+
+try {
+    $root = getcwd();
+
+    if(($autoloader = realpath(__DIR__ . '/../vendor/autoload.php')) === false) {
+        if(($autoloader = realpath(__DIR__ . '/../../../../vendor/autoload.php')) === false) {
+            throw new Exception("Unable to determine autoloader.", 100);
+        }
+    }
+
+    // autoloading
+    require_once $autoloader;
+
+    // this makes our life easier when dealing with paths.
+    // everything is relative to the application root now.
+    chdir($root);
+
+    $entity = new Entity();
+    $entity->setRoot($root . DIRECTORY_SEPARATOR . 'src');
+    $entity->setNamespace('foo');
+    $entity->setName('user_payment_transaction');
+
+    $field = new Field();
+    $field->setName('id');
+    $field->setType('int');
+    $entity->getFields()->addElement($field);
+
+    $field = new Field();
+    $field->setName('name');
+    $field->setType('string');
+    $entity->getFields()->addElement($field);
+
+    $field = new Field();
+    $field->setName('created_at');
+    $field->setType('DateTime');
+    $entity->getFields()->addElement($field);
+
+    $entity->generateAbstractModel();
+    $entity->generateAbstractModelCollection();
+    $entity->generateModel();
+    $entity->generateModelCollection();
+}
+catch(Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+    exit($e->getCode());
+}
