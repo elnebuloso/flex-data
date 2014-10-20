@@ -55,6 +55,15 @@ class Collection implements \Iterator, \ArrayAccess, \Countable, ToArrayInterfac
     }
 
     /**
+     * @param mixed $id
+     */
+    public function removeElement($id) {
+        if(array_key_exists($id, $this->elements)) {
+            unset($this->elements[$id]);
+        }
+    }
+
+    /**
      * @return int
      */
     public function getTotalCount() {

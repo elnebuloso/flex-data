@@ -59,6 +59,23 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function removeElement() {
+        $data = 'element';
+
+        $collection = new Collection();
+        $collection->addElement($data, 'foo');
+        $collection->addElement($data, 'bar');
+        $collection->removeElement('bar');
+
+        $elements = $collection->getElements();
+        $this->assertEquals($elements, array(
+            'foo' => 'element'
+        ));
+    }
+
+    /**
+     * @test
+     */
     public function totalCount() {
         $collection = new Collection();
         $collection->setTotalCount(2);
