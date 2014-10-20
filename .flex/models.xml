@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entities namespace="Foo">
+<entities namespace="test">
     <entity name="user">
         <fields>
-            <field name="id" type="int" />
-            <field name="name" type="string" />
-            <field name="created_at" type="DateTime" typeHinting="true" />
+            <field name="id" phpType="int" />
+            <field name="name" phpType="string" />
+            <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
         </fields>
     </entity>
 
     <entity name="user_payment_transaction">
         <fields>
-            <field name="id" type="int" />
-            <field name="transaction_id" type="string" />
-            <field name="created_at" type="DateTime" typeHinting="true" />
+            <field name="id" phpType="int" />
+            <field name="transaction_id" phpType="string" />
+            <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
         </fields>
     </entity>
 </entities>
