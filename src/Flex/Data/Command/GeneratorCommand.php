@@ -94,13 +94,15 @@ class GeneratorCommand extends Command {
             $entity = new Entity();
             $entity->setNamespace($generator->getNamespace());
             $entity->setTarget($generator->getTarget());
-            $entity->setClass((string) $entityNode->attributes()['class']);
+            $entity->setName((string) $entityNode->attributes()['name']);
+            $entity->setClassName((string) $entityNode->attributes()['className']);
 
             foreach($entityNode->fields->field as $fieldNode) {
                 /** @var SimpleXMLElement $fieldNode */
                 $field = new Field();
                 $field->setName((string) $fieldNode->attributes()['name']);
-                $field->setPhpMethod((string) $fieldNode->attributes()['phpMethod']);
+                $field->setDefaultValue((string) $fieldNode->attributes()['defaultValue']);
+                $field->setPhpName((string) $fieldNode->attributes()['phpName']);
                 $field->setPhpType((string) $fieldNode->attributes()['phpType']);
                 $field->setPhpTypeHinting((string) $fieldNode->attributes()['phpTypeHinting'] === 'true' ? true : false);
 
@@ -109,7 +111,7 @@ class GeneratorCommand extends Command {
             }
 
             $generator->getEntities()
-                      ->addElement($entity, $entity->getClass());
+                      ->addElement($entity, $entity->getName());
         }
 
         $generator->generate();

@@ -1,9 +1,13 @@
 <?php
 namespace Flex\Data\ModelGenerator;
 
+use Flex\Data\ModelGenerator\Entity\Field;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\FileGenerator;
+use Zend\Code\Generator\DocBlockGenerator;
+use Zend\Code\Generator\PropertyGenerator;
+use Zend\Code\Generator\MethodGenerator;
 
 /**
  * Class EntityGenerator
@@ -29,13 +33,6 @@ class EntityGenerator {
      * @return void
      */
     public function generate() {
-        echo PHP_EOL;
-        echo $this->getAbstractModelFilename() . PHP_EOL;
-        echo $this->getAbstractModelCollectionFilename() . PHP_EOL;
-        echo $this->getModelCollectionFilename() . PHP_EOL;
-        echo $this->getModelFilename() . PHP_EOL;
-        echo PHP_EOL;
-
         $this->generateAbstractModelCollection();
         $this->generateAbstractModel();
         $this->generateModelCollection();
@@ -48,7 +45,7 @@ class EntityGenerator {
      * @return string
      */
     private function getClassName($prepend = null, $append = null) {
-        $elements = explode('\\', $this->entity->getClass());
+        $elements = explode('\\', $this->entity->getClassName());
 
         return $prepend . ucfirst(array_pop($elements)) . $append;
     }
@@ -58,7 +55,7 @@ class EntityGenerator {
      * @return string
      */
     private function getNamespaceName($prepend) {
-        $elements = explode('\\', $this->entity->getClass());
+        $elements = explode('\\', $this->entity->getClassName());
         array_pop($elements);
         array_unshift($elements, $prepend);
         array_unshift($elements, $this->entity->getNamespace());
@@ -121,6 +118,26 @@ class EntityGenerator {
         $class->addUse('Flex\Data\AbstractObject');
         $class->setExtendedClass('AbstractObject');
 
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setShortDescription('Class ' . $class->getName());
+        $docBlock->setTag(array(
+            'name' => 'author',
+            'description' => 'Flex Data Model Generator'
+        ));
+        $class->setDocBlock($docBlock);
+
+//        // add fields
+//        foreach($this->entity->getFields() as $field) {
+//            /** @var Field $field */
+//            $class->addProperty($field->getName(), null, PropertyGenerator::FLAG_PRIVATE);
+//        }
+//
+//        foreach($this->entity->getFields() as $field) {
+//            /** @var Field $field */
+//            $method = new MethodGenerator();
+//            $method->setName('init');
+//        }
+
         $fs = new Filesystem();
         $fs->mkdir(pathinfo($this->getAbstractModelFilename(), PATHINFO_DIRNAME));
 
@@ -141,6 +158,14 @@ class EntityGenerator {
         $class->addUse('Flex\Data\Collection');
         $class->setExtendedClass('Collection');
 
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setShortDescription('Class ' . $class->getName());
+        $docBlock->setTag(array(
+            'name' => 'author',
+            'description' => 'Flex Data Model Generator'
+        ));
+        $class->setDocBlock($docBlock);
+
         $fs = new Filesystem();
         $fs->mkdir(pathinfo($this->getAbstractModelCollectionFilename(), PATHINFO_DIRNAME));
 
@@ -159,6 +184,14 @@ class EntityGenerator {
         $class->setNamespaceName($this->getNamespaceName('Model'));
         $class->addUse($this->getNamespaceName('AbstractModel') . '\\' . $this->getClassName('Abstract'));
         $class->setExtendedClass($this->getClassName('Abstract'));
+
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setShortDescription('Class ' . $class->getName());
+        $docBlock->setTag(array(
+            'name' => 'author',
+            'description' => 'Flex Data Model Generator'
+        ));
+        $class->setDocBlock($docBlock);
 
         if(!file_exists($this->getModelFilename())) {
             $fs = new Filesystem();
@@ -180,6 +213,14 @@ class EntityGenerator {
         $class->setNamespaceName($this->getNamespaceName('Model'));
         $class->addUse($this->getNamespaceName('AbstractModel') . '\\' . $this->getClassName('Abstract', 'Collection'));
         $class->setExtendedClass($this->getClassName('Abstract', 'Collection'));
+
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setShortDescription('Class ' . $class->getName());
+        $docBlock->setTag(array(
+            'name' => 'author',
+            'description' => 'Flex Data Model Generator'
+        ));
+        $class->setDocBlock($docBlock);
 
         if(!file_exists($this->getModelCollectionFilename())) {
             $fs = new Filesystem();

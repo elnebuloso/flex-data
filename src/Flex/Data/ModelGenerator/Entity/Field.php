@@ -1,6 +1,8 @@
 <?php
 namespace Flex\Data\ModelGenerator\Entity;
 
+use Exception;
+
 /**
  * Class Field
  *
@@ -14,14 +16,14 @@ class Field {
     private $name;
 
     /**
-     * @var mixed
+     * @var string
      */
-    private $value;
+    private $defaultValue;
 
     /**
      * @var string
      */
-    private $phpMethod;
+    private $phpName;
 
     /**
      * @var string
@@ -43,9 +45,14 @@ class Field {
 
     /**
      * @param string $name
+     * @throws Exception
      */
     public function setName($name) {
-        $this->name = $name;
+        $this->name = trim(strtolower($name));
+
+        if(empty($this->name)) {
+            throw new Exception('field name cannot be emtpy', 1000);
+        }
     }
 
     /**
@@ -56,38 +63,42 @@ class Field {
     }
 
     /**
-     * @param mixed $value
+     * @param string $defaultValue
      */
-    public function setValue($value) {
-        $this->value = $value;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue() {
-        return $this->value;
-    }
-
-    /**
-     * @param string $phpMethod
-     */
-    public function setPhpMethod($phpMethod) {
-        $this->phpMethod = $phpMethod;
+    public function setDefaultValue($defaultValue) {
+        $this->defaultValue = trim($defaultValue);
     }
 
     /**
      * @return string
      */
-    public function getPhpMethod() {
-        return $this->phpMethod;
+    public function getDefaultValue() {
+        return $this->defaultValue;
+    }
+
+    /**
+     * @param string $phpName
+     */
+    public function setPhpName($phpName) {
+        $this->phpName = trim($phpName);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhpName() {
+        if(empty($this->phpName)) {
+            return $this->name;
+        }
+
+        return $this->phpName;
     }
 
     /**
      * @param string $phpType
      */
     public function setPhpType($phpType) {
-        $this->phpType = $phpType;
+        $this->phpType = trim($phpType);
     }
 
     /**

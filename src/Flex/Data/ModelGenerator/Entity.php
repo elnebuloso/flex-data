@@ -24,7 +24,12 @@ class Entity {
     /**
      * @var string
      */
-    private $class;
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $className;
 
     /**
      * @var FieldCollection
@@ -46,7 +51,7 @@ class Entity {
         $this->namespace = trim($namespace);
 
         if(empty($this->namespace)) {
-            throw new Exception('namespace cannot be emtpy', 1000);
+            throw new Exception('entity namespace cannot be emtpy', 1000);
         }
     }
 
@@ -65,7 +70,7 @@ class Entity {
         $this->target = realpath($target);
 
         if($this->target === false) {
-            throw new Exception('invalid path to model output: ' . $target, 1000);
+            throw new Exception('entity has invalid path to model output: ' . $target, 1000);
         }
     }
 
@@ -77,22 +82,40 @@ class Entity {
     }
 
     /**
-     * @param string $class
+     * @param string $name
      * @throws Exception
      */
-    public function setClass($class) {
-        $this->class = trim($class);
+    public function setName($name) {
+        $this->name = trim(strtolower($name));
 
-        if(empty($this->class)) {
-            throw new Exception('class cannot be emtpy', 1000);
+        if(empty($this->name)) {
+            throw new Exception('entity name cannot be emtpy', 1000);
         }
     }
 
     /**
      * @return string
      */
-    public function getClass() {
-        return $this->class;
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * @param string $className
+     */
+    public function setClassName($className) {
+        $this->className = trim($className);
+    }
+
+    /**
+     * @return string
+     */
+    public function getClassName() {
+        if(empty($this->className)) {
+            return implode('\\', array_map('ucfirst', explode('_', $this->getName())));
+        }
+
+        return $this->className;
     }
 
     /**

@@ -2,19 +2,27 @@
 
 <entities namespace="Foo\Data" target="../src">
 
-    <entity class="User">
+    <entity name="user" className="">
         <fields>
-            <field name="id" />
-            <field name="name" phpMethod="myName" phpType="string" />
-            <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
+            <field name="foo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bar" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="baz" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bingo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bongo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="created_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
         </fields>
     </entity>
 
-    <entity class="User\Payment\Transaction">
+    <entity name="user_payment_transaction">
         <fields>
-            <field name="id" phpType="int" />
-            <field name="transaction_id" phpType="string" />
-            <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
+            <field name="foo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bar" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="baz" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bingo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="bongo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="created_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
         </fields>
     </entity>
 
