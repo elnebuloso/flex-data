@@ -2,12 +2,12 @@
 namespace Flex\Data\ModelGenerator;
 
 use Flex\Data\ModelGenerator\Entity\Field;
+use Flex\Data\ModelGenerator\Entity\FieldGenerator;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\FileGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
-use Zend\Code\Generator\PropertyGenerator;
-use Zend\Code\Generator\MethodGenerator;
+
 
 /**
  * Class EntityGenerator
@@ -126,17 +126,12 @@ class EntityGenerator {
         ));
         $class->setDocBlock($docBlock);
 
-//        // add fields
-//        foreach($this->entity->getFields() as $field) {
-//            /** @var Field $field */
-//            $class->addProperty($field->getName(), null, PropertyGenerator::FLAG_PRIVATE);
-//        }
-//
-//        foreach($this->entity->getFields() as $field) {
-//            /** @var Field $field */
-//            $method = new MethodGenerator();
-//            $method->setName('init');
-//        }
+        foreach($this->entity->getFields() as $field) {
+            /** @var Field $field */
+            $fieldGenerator = new FieldGenerator($field);
+            $class->addMethodFromGenerator($fieldGenerator->getSetterMethod());
+            $class->addMethodFromGenerator($fieldGenerator->getGetterMethod());
+        }
 
         $fs = new Filesystem();
         $fs->mkdir(pathinfo($this->getAbstractModelFilename(), PATHINFO_DIRNAME));

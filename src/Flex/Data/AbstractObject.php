@@ -62,13 +62,6 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     }
 
     /**
-     * @return Record
-     */
-    public function getRecord() {
-        return $this->record;
-    }
-
-    /**
      * @return bool
      */
     public function isDirty() {

@@ -88,7 +88,7 @@ class Field {
      */
     public function getPhpName() {
         if(empty($this->phpName)) {
-            return $this->name;
+            return lcfirst(implode(null, array_map('ucfirst', explode('_', $this->getName()))));
         }
 
         return $this->phpName;
@@ -105,6 +105,10 @@ class Field {
      * @return string
      */
     public function getPhpType() {
+        if(empty($this->phpType)) {
+            return 'mixed';
+        }
+
         return $this->phpType;
     }
 
