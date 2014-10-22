@@ -4,25 +4,27 @@
 
     <entity name="user" className="">
         <fields>
-            <field name="foo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bar" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="baz" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bingo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bongo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="created_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="edited_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="id" defaultValue="" phpName="" phpType="int" phpTypeHinting="" />
+            <field name="foo" defaultValue="" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="bar" defaultValue="" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="baz" defaultValue="" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="bingo" defaultValue="" phpName="" phpType="array" phpTypeHinting="" />
+            <field name="bongo" defaultValue="" phpName="" phpType="array" phpTypeHinting="true" />
+            <field name="created_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="" />
         </fields>
     </entity>
 
     <entity name="user_payment_transaction">
         <fields>
-            <field name="foo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bar" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="baz" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bingo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="bongo" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="created_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
-            <field name="edited_at" defaultValue="" phpName="" phpType="" phpTypeHinting="" />
+            <field name="id" defaultValue="" phpName="" phpType="int" phpTypeHinting="" />
+            <field name="foo" defaultValue="" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="bar" defaultValue="" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="baz" defaultValue="" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="bingo" defaultValue="" phpName="" phpType="array" phpTypeHinting="" />
+            <field name="bongo" defaultValue="" phpName="" phpType="array" phpTypeHinting="true" />
+            <field name="created_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="true" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="true" />
         </fields>
     </entity>
 
