@@ -29,7 +29,17 @@ class EntityGenerator {
      * @return void
      */
     public function generate() {
+        echo PHP_EOL;
+        echo $this->getAbstractModelFilename() . PHP_EOL;
+        echo $this->getAbstractModelCollectionFilename() . PHP_EOL;
+        echo $this->getModelCollectionFilename() . PHP_EOL;
+        echo $this->getModelFilename() . PHP_EOL;
+        echo PHP_EOL;
+
+        $this->generateAbstractModelCollection();
         $this->generateAbstractModel();
+        $this->generateModelCollection();
+        $this->generateModel();
     }
 
     /**
@@ -38,7 +48,7 @@ class EntityGenerator {
      * @return string
      */
     private function getClassName($prepend = null, $append = null) {
-        $elements = explode('_', $this->entity->getClass());
+        $elements = explode('\\', $this->entity->getClass());
 
         return $prepend . ucfirst(array_pop($elements)) . $append;
     }
@@ -48,7 +58,7 @@ class EntityGenerator {
      * @return string
      */
     private function getNamespaceName($prepend) {
-        $elements = explode('_', $this->entity->getClass());
+        $elements = explode('\\', $this->entity->getClass());
         array_pop($elements);
         array_unshift($elements, $prepend);
         array_unshift($elements, $this->entity->getNamespace());

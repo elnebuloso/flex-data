@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <entities namespace="Foo\Data" target="../src">
+
     <entity class="User">
         <fields>
             <field name="id" />
@@ -16,4 +17,5 @@
             <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
         </fields>
     </entity>
+
 </entities>
