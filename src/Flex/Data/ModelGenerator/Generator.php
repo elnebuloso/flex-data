@@ -1,6 +1,8 @@
 <?php
 namespace Flex\Data\ModelGenerator;
 
+use Exception;
+
 /**
  * Class Generator
  *
@@ -11,7 +13,12 @@ class Generator {
     /**
      * @var string
      */
-    private $root;
+    private $namespace;
+
+    /**
+     * @var string
+     */
+    private $target;
 
     /**
      * @var EntityCollection
@@ -19,24 +26,48 @@ class Generator {
     private $entities;
 
     /**
-     * @param string $root
+     * @return self
      */
-    public function setRoot($root) {
-        $this->root = $root;
+    public function __construct() {
+        $this->entities = new EntityCollection();
+    }
+
+    /**
+     * @param string $namespace
+     * @throws Exception
+     */
+    public function setNamespace($namespace) {
+        $this->namespace = trim($namespace);
+
+        if(empty($this->namespace)) {
+            throw new Exception('namespace cannot be emtpy', 1000);
+        }
     }
 
     /**
      * @return string
      */
-    public function getRoot() {
-        return $this->root;
+    public function getNamespace() {
+        return $this->namespace;
     }
 
     /**
-     * @param EntityCollection $entities
+     * @param string $target
+     * @throws Exception
      */
-    public function setEntities($entities) {
-        $this->entities = $entities;
+    public function setTarget($target) {
+        $this->target = realpath($target);
+
+        if($this->target === false) {
+            throw new Exception('invalid path to model output: ' . $target, 1000);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getTarget() {
+        return $this->target;
     }
 
     /**

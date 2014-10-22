@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entities namespace="test">
-    <entity name="user">
+
+<entities namespace="Foo\Data" target="../src">
+    <entity class="User">
         <fields>
-            <field name="id" phpType="int" />
-            <field name="name" phpType="string" />
+            <field name="id" />
+            <field name="name" phpMethod="myName" phpType="string" />
             <field name="created_at" phpType="DateTime" phpTypeHinting="true" />
         </fields>
     </entity>
 
-    <entity name="user_payment_transaction">
+    <entity class="User\Payemnt\Transaction">
         <fields>
             <field name="id" phpType="int" />
             <field name="transaction_id" phpType="string" />

@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
-use Flex\Data\ModelGenerator\Entity;use Flex\Data\ModelGenerator\Entity\Field;
+use Symfony\Component\Console\Application;
+use Flex\Data\Command\GeneratorCommand;
 
 // error reporting
 ini_set('error_reporting', E_ALL);
@@ -22,30 +23,11 @@ try {
     // everything is relative to the application root now.
     chdir($root);
 
-    $entity = new Entity();
-    $entity->setRoot($root . DIRECTORY_SEPARATOR . 'src');
-    $entity->setNamespace('foo');
-    $entity->setName('user_payment_transaction');
+    $console = new Application();
+    $command = new GeneratorCommand();
+    $console->add($command);
 
-    $field = new Field();
-    $field->setName('id');
-    $field->setType('int');
-    $entity->getFields()->addElement($field);
-
-    $field = new Field();
-    $field->setName('name');
-    $field->setType('string');
-    $entity->getFields()->addElement($field);
-
-    $field = new Field();
-    $field->setName('created_at');
-    $field->setType('DateTime');
-    $entity->getFields()->addElement($field);
-
-    $entity->generateAbstractModel();
-    $entity->generateAbstractModelCollection();
-    $entity->generateModel();
-    $entity->generateModelCollection();
+    exit($console->run());
 }
 catch(Exception $e) {
     echo $e->getMessage() . PHP_EOL;

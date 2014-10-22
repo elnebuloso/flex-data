@@ -14,14 +14,32 @@ class Field {
     private $name;
 
     /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
      * @var string
      */
-    private $type;
+    private $phpMethod;
+
+    /**
+     * @var string
+     */
+    private $phpType;
 
     /**
      * @var bool
      */
-    private $typeHinting = false;
+    private $phpTypeHinting;
+
+    /**
+     * @return self
+     */
+    public function __construct() {
+        $this->phpType = 'mixed';
+        $this->phpTypeHinting = false;
+    }
 
     /**
      * @param string $name
@@ -38,30 +56,58 @@ class Field {
     }
 
     /**
-     * @param string $type
+     * @param mixed $value
      */
-    public function setType($type) {
-        $this->type = $type;
+    public function setValue($value) {
+        $this->value = $value;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue() {
+        return $this->value;
+    }
+
+    /**
+     * @param string $phpMethod
+     */
+    public function setPhpMethod($phpMethod) {
+        $this->phpMethod = $phpMethod;
     }
 
     /**
      * @return string
      */
-    public function getType() {
-        return $this->type;
+    public function getPhpMethod() {
+        return $this->phpMethod;
     }
 
     /**
-     * @param boolean $typeHinting
+     * @param string $phpType
      */
-    public function setTypeHinting($typeHinting) {
-        $this->typeHinting = $typeHinting;
+    public function setPhpType($phpType) {
+        $this->phpType = $phpType;
     }
 
     /**
-     * @return boolean
+     * @return string
      */
-    public function getTypeHinting() {
-        return $this->typeHinting;
+    public function getPhpType() {
+        return $this->phpType;
+    }
+
+    /**
+     * @param bool $phpTypeHinting
+     */
+    public function setPhpTypeHinting($phpTypeHinting) {
+        $this->phpTypeHinting = $phpTypeHinting;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPhpTypeHinting() {
+        return $this->phpTypeHinting;
     }
 }
