@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entities namespace="Foo\Data" target="../src">
+
+    <entity name="user" className="">
+        <fields>
+            <field name="id" defaultValue="123" phpName="" phpType="int" phpTypeHinting="" />
+            <field name="foo" defaultValue="defaultFoo" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="bar" defaultValue="defaultBar" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="baz" defaultValue="true" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="buz" defaultValue="false" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="biz" defaultValue="1.234" phpName="" phpType="float" phpTypeHinting="" />
+            <field name="boz" defaultValue="nonsens" phpName="" phpType="null" phpTypeHinting="" />
+            <field name="created_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="" />
+        </fields>
+    </entity>
+
+    <entity name="user_payment_transaction" className="">
+        <fields>
+            <field name="id" defaultValue="123" phpName="" phpType="int" phpTypeHinting="" />
+            <field name="foo" defaultValue="defaultFoo" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="bar" defaultValue="defaultBar" phpName="" phpType="string" phpTypeHinting="" />
+            <field name="baz" defaultValue="true" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="buz" defaultValue="false" phpName="" phpType="bool" phpTypeHinting="" />
+            <field name="biz" defaultValue="1.234" phpName="" phpType="float" phpTypeHinting="" />
+            <field name="boz" defaultValue="nonsens" phpName="" phpType="null" phpTypeHinting="" />
+            <field name="created_at" defaultValue="2014-10-23 00:00:00" phpName="" phpType="\DateTime" phpTypeHinting="true" />
+            <field name="edited_at" defaultValue="" phpName="" phpType="\DateTime" phpTypeHinting="true" />
+        </fields>
+    </entity>
+
+</entities>

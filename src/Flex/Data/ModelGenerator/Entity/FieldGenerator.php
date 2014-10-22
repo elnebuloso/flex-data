@@ -10,7 +10,6 @@ use Zend\Code\Generator\ParameterGenerator;
 /**
  * Class FieldGenerator
  *
- * @package Flex\Data\ModelGenerator\Entity
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class FieldGenerator {

@@ -21,28 +21,33 @@ class GeneratorCommand extends Command {
     /**
      * @var InputInterface
      */
-    private $input;
+    protected $input;
 
     /**
      * @var OutputInterface
      */
-    private $output;
+    protected $output;
 
     /**
      * @var string
      */
-    private $xmlFile;
+    protected $xmlFile;
+
+    /**
+     * @var string
+     */
+    protected $xmlFileDefault = '.flex/data-models.xml';
 
     /**
      * @var SimpleXMLElement
      */
-    private $xml;
+    protected $xml;
 
     /**
      * @param string $xmlFile
      * @throws Exception
      */
-    private function setxmlFile($xmlFile) {
+    protected function setXmlFile($xmlFile) {
         $this->xmlFile = realpath($xmlFile);
 
         if($this->xmlFile === false) {
@@ -53,7 +58,7 @@ class GeneratorCommand extends Command {
     /**
      * @return void
      */
-    private function loadXmlFile() {
+    protected function loadXmlFile() {
         $this->xml = simplexml_load_file($this->xmlFile);
     }
 
@@ -62,9 +67,9 @@ class GeneratorCommand extends Command {
      */
     protected function configure() {
         $this->setName('generate');
-        $this->setDescription('generate data models');
+        $this->setDescription('generate models');
 
-        $this->addOption('xmlFile', 'path to xmlFile', InputOption::VALUE_OPTIONAL, 'the path to the xmlFile model definition', '.flex/data-models.xml');
+        $this->addOption('xmlFile', 'path to xmlFile', InputOption::VALUE_OPTIONAL, 'the path to the xmlFile model definition', $this->xmlFileDefault);
     }
 
     /**
@@ -76,15 +81,22 @@ class GeneratorCommand extends Command {
         $this->input = $input;
         $this->output = $output;
 
-        $this->setxmlFile($this->input->getOption('xmlFile'));
+        $this->output->writeln("<comment>generating models</comment>");
+        $this->setXmlFile($this->input->getOption('xmlFile'));
+
+        $this->output->writeln("<comment>load xml file</comment>");
+        $this->output->writeln("<info>" . $this->xmlFile . "</info>");
         $this->loadXmlFile();
+
+        $this->output->writeln("<comment>generating models</comment>");
         $this->generate();
+        $this->output->writeln("<comment>generating models, done</comment>");
     }
 
     /**
      * @return void
      */
-    private function generate() {
+    protected function generate() {
         $generator = new Generator();
         $generator->setNamespace((string) $this->xml->attributes()['namespace']);
         $generator->setTarget(dirname($this->xmlFile) . '/' . (string) $this->xml->attributes()['target']);
@@ -106,12 +118,12 @@ class GeneratorCommand extends Command {
                 $field->setPhpType((string) $fieldNode->attributes()['phpType']);
                 $field->setPhpTypeHinting((string) $fieldNode->attributes()['phpTypeHinting'] === 'true' ? true : false);
 
-                $entity->getFields()
-                       ->addElement($field, $field->getName());
+                $fields = $entity->getFields();
+                $fields->addElement($field, $field->getName());
             }
 
-            $generator->getEntities()
-                      ->addElement($entity, $entity->getName());
+            $entities = $generator->getEntities();
+            $entities->addElement($entity, $entity->getName());
         }
 
         $generator->generate();

@@ -14,7 +14,6 @@ use Zend\Code\Generator\ParameterGenerator;
 /**
  * Class EntityGenerator
  *
- * @package Flex\Data\ModelGenerator
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
 class EntityGenerator {
