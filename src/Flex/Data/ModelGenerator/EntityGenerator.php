@@ -5,9 +5,8 @@ use Flex\Data\ModelGenerator\Entity\Field;
 use Flex\Data\ModelGenerator\Entity\FieldGenerator;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\FileGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
-
+use Zend\Code\Generator\FileGenerator;
 
 /**
  * Class EntityGenerator
