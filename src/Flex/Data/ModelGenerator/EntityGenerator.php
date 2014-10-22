@@ -5,8 +5,11 @@ use Flex\Data\ModelGenerator\Entity\Field;
 use Flex\Data\ModelGenerator\Entity\FieldGenerator;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
+use Zend\Code\Generator\DocBlock\Tag\ParamTag;
 use Zend\Code\Generator\DocBlockGenerator;
 use Zend\Code\Generator\FileGenerator;
+use Zend\Code\Generator\MethodGenerator;
+use Zend\Code\Generator\ParameterGenerator;
 
 /**
  * Class EntityGenerator
@@ -48,6 +51,40 @@ class EntityGenerator {
             'description' => 'elnebuloso/flex-data (Model Generator)'
         ));
 
+        $parameter = new ParameterGenerator();
+        $parameter->setName('data');
+        $parameter->setType('array');
+        $parameter->setDefaultValue(array());
+
+        $entityFields = $this->entity->getFields();
+        $methodContent = array();
+        $methodContent[] = '$defaults = ' . var_export($entityFields->getDefaults(), true) . ';';
+        $methodContent[] = null;
+
+        foreach($this->entity->getFields() as $field) {
+            /** @var Field $field */
+            if($field->getPhpType() == '\DateTime' && $field->getDefaultValue() != '') {
+                $methodContent[] = '$defaults[\'' . $field->getName() . '\'] = new \DateTime(\'' . $field->getDefaultValue() . '\');';
+            }
+        }
+
+        $methodContent[] = null;
+        $methodContent[] = '$data = array_merge($defaults, $data);';
+        $methodContent[] = 'parent::__construct($data);';
+
+        $methodDocBlockTag = new ParamTag();
+        $methodDocBlockTag->setTypes('array');
+        $methodDocBlockTag->setVariableName('data');
+
+        $methodDocBlock = new DocBlockGenerator();
+        $methodDocBlock->setTag($methodDocBlockTag);
+
+        $method = new MethodGenerator();
+        $method->setName('__construct');
+        $method->setParameter($parameter);
+        $method->setBody(implode(PHP_EOL, $methodContent));
+        $method->setDocBlock($methodDocBlock);
+
         $class = new ClassGenerator();
         $class->setAbstract(true);
         $class->setName($this->getClassName('Abstract'));
@@ -55,6 +92,7 @@ class EntityGenerator {
         $class->addUse('Flex\Data\AbstractObject');
         $class->setExtendedClass('AbstractObject');
         $class->setDocBlock($docBlock);
+        $class->addMethodFromGenerator($method);
 
         foreach($this->entity->getFields() as $field) {
             /** @var Field $field */
