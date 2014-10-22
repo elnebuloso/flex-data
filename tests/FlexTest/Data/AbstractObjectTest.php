@@ -34,14 +34,6 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function getRecord() {
-        $record = $this->object->getRecord();
-        $this->assertInstanceOf('\Flex\Data\Record', $record);
-    }
-
-    /**
-     * @test
-     */
     public function isDirty() {
         $this->assertEquals(false, $this->object->isDirty());
         $this->object->setNickname('bar');
@@ -69,8 +61,11 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
             'init'
         );
 
-        $object = $this->getMockBuilder('Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
-        $object->expects($this->once())->method('init');
+        $object = $this->getMockBuilder('Flex\Data\AbstractObject')
+                       ->setMethods($mockMethods)
+                       ->getMockForAbstractClass();
+        $object->expects($this->once())
+               ->method('init');
         $object->__wakeup();
     }
 
@@ -149,14 +144,14 @@ class AbstractObjectTest_Object extends AbstractObject {
      * @return string
      */
     public function getNickname() {
-        return $this->getRecord()->nickname;
+        return $this->record->nickname;
     }
 
     /**
      * @param string $v
      */
     public function setNickname($v) {
-        $this->getRecord()->nickname = $v;
+        $this->record->nickname = $v;
     }
 }
 
@@ -166,20 +161,20 @@ class AbstractObjectTest_User extends AbstractObject {
      * @return string
      */
     public function getName() {
-        return $this->getRecord()->name;
+        return $this->record->name;
     }
 
     /**
      * @param $name
      */
     public function setName($name) {
-        $this->getRecord()->name = $name;
+        $this->record->name = $name;
     }
 
     /**
      * @param $user
      */
     public function setUser($user) {
-        $this->getRecord()->user = $user;
+        $this->record->user = $user;
     }
 }

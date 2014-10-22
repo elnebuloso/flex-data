@@ -15,7 +15,7 @@
         </fields>
     </entity>
 
-    <entity name="user_payment_transaction">
+    <entity name="user_payment_transaction" className="">
         <fields>
             <field name="id" defaultValue="" phpName="" phpType="int" phpTypeHinting="" />
             <field name="foo" defaultValue="" phpName="" phpType="string" phpTypeHinting="" />
