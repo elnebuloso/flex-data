@@ -76,4 +76,15 @@ class Generator {
     public function getEntities() {
         return $this->entities;
     }
+
+    /**
+     * @return void
+     */
+    public function generate() {
+        foreach($this->getEntities() as $entity) {
+            /** @var Entity $entity */
+            $generator = new EntityGenerator($entity);
+            $generator->generate();
+        }
+    }
 }

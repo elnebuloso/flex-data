@@ -9,7 +9,7 @@
         </fields>
     </entity>
 
-    <entity class="User\Payemnt\Transaction">
+    <entity class="User\Payment\Transaction">
         <fields>
             <field name="id" phpType="int" />
             <field name="transaction_id" phpType="string" />

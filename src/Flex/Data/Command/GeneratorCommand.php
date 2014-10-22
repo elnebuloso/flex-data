@@ -111,5 +111,7 @@ class GeneratorCommand extends Command {
             $generator->getEntities()
                       ->addElement($entity, $entity->getClass());
         }
+
+        $generator->generate();
     }
 }
