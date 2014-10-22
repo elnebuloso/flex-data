@@ -1,8 +1,8 @@
 <?php
-namespace Flex\Data\ModelGenerator;
+namespace Flex\Data\Generator;
 
 use Exception;
-use Flex\Data\ModelGenerator\Entity\FieldCollection;
+use Flex\Data\Generator\Entity\FieldCollection;
 
 /**
  * Class Entity

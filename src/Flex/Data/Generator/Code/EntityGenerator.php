@@ -1,8 +1,8 @@
 <?php
-namespace Flex\Data\ModelGenerator;
+namespace Flex\Data\Generator\Code;
 
-use Flex\Data\ModelGenerator\Entity\Field;
-use Flex\Data\ModelGenerator\Entity\FieldGenerator;
+use Flex\Data\Generator\Entity;
+use Flex\Data\Generator\Entity\Field;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\DocBlock\Tag\ParamTag;

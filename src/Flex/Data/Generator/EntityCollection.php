@@ -1,5 +1,5 @@
 <?php
-namespace Flex\Data\ModelGenerator;
+namespace Flex\Data\Generator;
 
 use Flex\Data\Collection;
 

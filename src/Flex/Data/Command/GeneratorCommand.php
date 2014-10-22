@@ -2,9 +2,9 @@
 namespace Flex\Data\Command;
 
 use Exception;
-use Flex\Data\ModelGenerator\Entity;
-use Flex\Data\ModelGenerator\Entity\Field;
-use Flex\Data\ModelGenerator\Generator;
+use Flex\Data\Generator\Entity;
+use Flex\Data\Generator\Entity\Field;
+use Flex\Data\Generator\ModelGenerator;
 use SimpleXMLElement;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -97,7 +97,7 @@ class GeneratorCommand extends Command {
      * @return void
      */
     protected function generate() {
-        $generator = new Generator();
+        $generator = new ModelGenerator();
         $generator->setNamespace((string) $this->xml->attributes()['namespace']);
         $generator->setTarget(dirname($this->xmlFile) . '/' . (string) $this->xml->attributes()['target']);
 

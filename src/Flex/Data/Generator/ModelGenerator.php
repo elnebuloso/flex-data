@@ -1,14 +1,15 @@
 <?php
-namespace Flex\Data\ModelGenerator;
+namespace Flex\Data\Generator;
 
 use Exception;
+use Flex\Data\Generator\Code\EntityGenerator;
 
 /**
- * Class Generator
+ * Class ModelGenerator
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class Generator {
+class ModelGenerator {
 
     /**
      * @var string

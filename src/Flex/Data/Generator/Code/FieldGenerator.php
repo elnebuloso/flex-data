@@ -1,6 +1,7 @@
 <?php
-namespace Flex\Data\ModelGenerator\Entity;
+namespace Flex\Data\Generator\Code;
 
+use Flex\Data\Generator\Entity\Field;
 use Zend\Code\Generator\DocBlock\Tag\ParamTag;
 use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
 use Zend\Code\Generator\DocBlockGenerator;

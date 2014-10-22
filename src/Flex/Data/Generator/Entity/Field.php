@@ -1,5 +1,5 @@
 <?php
-namespace Flex\Data\ModelGenerator\Entity;
+namespace Flex\Data\Generator\Entity;
 
 use Exception;
 
