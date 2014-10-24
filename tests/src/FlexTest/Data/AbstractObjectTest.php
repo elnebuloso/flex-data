@@ -34,7 +34,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function isDirty() {
+    public function test_isDirty() {
         $this->assertEquals(false, $this->object->isDirty());
         $this->object->setNickname('bar');
         $this->assertEquals(true, $this->object->isDirty());
@@ -46,7 +46,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function sleep() {
+    public function test_sleep() {
         $data = $this->object->__sleep();
         $this->assertEquals(array(
             'record'
@@ -56,7 +56,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function wakeup() {
+    public function test_wakeup() {
         $mockMethods = array(
             'init'
         );
@@ -73,7 +73,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @test
      * @expectedException \Exception
      */
-    public function getPropertyNotExisting() {
+    public function test_getPropertyNotExisting() {
         $this->object->lastname;
     }
 
@@ -81,21 +81,21 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @test
      * @expectedException \Exception
      */
-    public function setPropertyNotExisting() {
+    public function test_setPropertyNotExisting() {
         $this->object->lastname = 'foo';
     }
 
     /**
      * @test
      */
-    public function toArray() {
+    public function test_toArray() {
         $this->assertEquals($this->values, $this->object->toArray());
     }
 
     /**
      * @test
      */
-    public function toArrayWithToArrayInterfaceObject() {
+    public function test_toArrayWithToArrayInterfaceObject() {
         $expected = array(
             'name' => 'foo',
             'user' => array(
@@ -117,7 +117,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function toJsonWithToJsonInterfaceObject() {
+    public function test_toJsonWithToJsonInterfaceObject() {
         $expected = array(
             'name' => 'foo',
             'user' => array(

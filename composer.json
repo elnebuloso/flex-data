@@ -16,12 +16,6 @@
     "require": {
         "php": "~5.3"
     },
-    "require-dev": {
-        "elnebuloso\/flex-converter": "~1.0",
-        "satooshi\/php-coveralls": "dev-master",
-        "symfony\/console": "~2.5",
-        "zendframework\/zend-code": "~2.3"
-    },
     "autoload": {
         "psr-0": {
             "Flex\\": "src\/"

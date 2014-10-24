@@ -1,8 +1,26 @@
-flex-data
-=========
+# flex-data
 
-[![Build Status](https://travis-ci.org/elnebuloso/flex-data.svg?branch=master)](https://travis-ci.org/elnebuloso/flex-data)
-[![Coverage Status](https://img.shields.io/coveralls/elnebuloso/flex-data.svg)](https://coveralls.io/r/elnebuloso/flex-data?branch=master)
-[![License](https://poser.pugx.org/elnebuloso/flex-data/license.svg)](https://packagist.org/packages/elnebuloso/flex-data)
+[![Build Status](https://img.shields.io/travis/elnebuloso/flex-data/master.svg?style=flat-square)](https://travis-ci.org/elnebuloso/flex-data)
+[![Software License](https://img.shields.io/packagist/l/elnebuloso/flex-data.svg?style=flat-square)](LICENSE)
 
-data modeling
+## Installation / Usage
+
+Via Composer
+
+``` json
+{
+    "require": {
+        "elnebuloso/flex-data": "~2.0"
+    }
+}
+```
+
+## Requirements
+
+The following versions of PHP are supported by this version.
+
+* PHP 5.3
+* PHP 5.4
+* PHP 5.5
+* PHP 5.6
+* HHVM
