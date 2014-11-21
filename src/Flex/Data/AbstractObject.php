@@ -2,6 +2,8 @@
 namespace Flex\Data;
 
 use Exception;
+use Flex\ToArrayInterface;
+use Flex\ToJsonInterface;
 
 /**
  * Class AbstractObject

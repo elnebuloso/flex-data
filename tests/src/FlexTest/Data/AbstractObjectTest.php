@@ -61,11 +61,10 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
             'init'
         );
 
-        $object = $this->getMockBuilder('Flex\Data\AbstractObject')
-                       ->setMethods($mockMethods)
-                       ->getMockForAbstractClass();
-        $object->expects($this->once())
-               ->method('init');
+        $object = $this->getMockBuilder('Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
+        $object->expects($this->once())->method('init');
+
+        /** @var \Flex\Data\AbstractObject $object */
         $object->__wakeup();
     }
 
