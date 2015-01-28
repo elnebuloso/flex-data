@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.3.1
+
+- just some coding conventions
+
 ## 2.3.0
 
 - added changelog
