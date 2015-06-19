@@ -8,7 +8,8 @@ use stdClass;
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class Record extends stdClass {
+class Record extends stdClass
+{
 
     /**
      * @var array
@@ -28,8 +29,9 @@ class Record extends stdClass {
     /**
      * @param array $data
      */
-    public function __construct(array $data = null) {
-        if(!is_null($data)) {
+    public function __construct(array $data = null)
+    {
+        if (!is_null($data)) {
             $this->data = $data;
         }
     }
@@ -38,8 +40,9 @@ class Record extends stdClass {
      * @param string $property
      * @return mixed
      */
-    public function __get($property) {
-        if(!array_key_exists($property, $this->data)) {
+    public function __get($property)
+    {
+        if (!array_key_exists($property, $this->data)) {
             return null;
         }
 
@@ -50,8 +53,9 @@ class Record extends stdClass {
      * @param string $property
      * @param mixed $value
      */
-    public function __set($property, $value) {
-        if(array_key_exists($property, $this->data) && $this->data[$property] != $value) {
+    public function __set($property, $value)
+    {
+        if (array_key_exists($property, $this->data) && $this->data[$property] != $value) {
             $this->dirty = true;
             $this->changes[$property] = $this->data[$property];
         }
@@ -62,7 +66,8 @@ class Record extends stdClass {
     /**
      * @return array
      */
-    public function __sleep() {
+    public function __sleep()
+    {
         return array(
             'data',
             'dirty',
@@ -73,10 +78,11 @@ class Record extends stdClass {
     /**
      * @param bool $dirty
      */
-    public function setDirty($dirty) {
+    public function setDirty($dirty)
+    {
         $this->dirty = $dirty;
 
-        if(!$dirty) {
+        if (!$dirty) {
             $this->changes = array();
         }
     }
@@ -84,25 +90,28 @@ class Record extends stdClass {
     /**
      * @return bool
      */
-    public function isDirty() {
+    public function isDirty()
+    {
         return $this->dirty;
     }
 
     /**
      * @return array
      */
-    public function getData() {
+    public function getData()
+    {
         return $this->data;
     }
 
     /**
      * @return array
      */
-    public function getChanges() {
+    public function getChanges()
+    {
         $changes = array();
 
-        foreach(array_keys($this->changes) as $id) {
-            if(array_key_exists($id, $this->data)) {
+        foreach (array_keys($this->changes) as $id) {
+            if (array_key_exists($id, $this->data)) {
                 $changes[$id] = $this->data[$id];
             }
         }
@@ -114,8 +123,9 @@ class Record extends stdClass {
      * @param string $property
      * @return mixed
      */
-    public function getValue($property) {
-        if(!array_key_exists($property, $this->data)) {
+    public function getValue($property)
+    {
+        if (!array_key_exists($property, $this->data)) {
             return null;
         }
 
@@ -125,8 +135,9 @@ class Record extends stdClass {
     /**
      * @param string $key
      */
-    public function unsetProperty($key) {
-        if(array_key_exists($key, $this->data)) {
+    public function unsetProperty($key)
+    {
+        if (array_key_exists($key, $this->data)) {
             unset($this->data[$key]);
         }
     }

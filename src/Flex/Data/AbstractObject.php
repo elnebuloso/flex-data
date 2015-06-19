@@ -10,7 +10,8 @@ use Flex\ToJsonInterface;
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
+abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
+{
 
     /**
      * @var Record
@@ -20,7 +21,8 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     /**
      * @param array $data
      */
-    public function __construct(array $data = array()) {
+    public function __construct(array $data = array())
+    {
         $this->record = new Record($data);
         $this->init();
     }
@@ -28,21 +30,24 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     /**
      * @return void
      */
-    public function init() {
+    public function init()
+    {
         return null;
     }
 
     /**
      * @return array
      */
-    public function __sleep() {
+    public function __sleep()
+    {
         return array('record');
     }
 
     /**
      * @return void
      */
-    public function __wakeup() {
+    public function __wakeup()
+    {
         $this->init();
     }
 
@@ -50,7 +55,8 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
      * @param string $property
      * @throws Exception
      */
-    public function __get($property) {
+    public function __get($property)
+    {
         throw new Exception("Trying to read unknown class property `" . get_class($this) . "::$property::`.");
     }
 
@@ -59,32 +65,36 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
      * @param mixed $value
      * @throws Exception
      */
-    public function __set($property, $value) {
+    public function __set($property, $value)
+    {
         throw new Exception("Trying to write unknown class property `" . get_class($this) . "::$property::$value`.");
     }
 
     /**
      * @return bool
      */
-    public function isDirty() {
+    public function isDirty()
+    {
         return $this->record->isDirty();
     }
 
     /**
      * @param bool $dirty
      */
-    public function setDirty($dirty) {
+    public function setDirty($dirty)
+    {
         $this->record->setDirty($dirty);
     }
 
     /**
      * @return array
      */
-    public function toArray() {
+    public function toArray()
+    {
         $data = $this->record->getData();
 
-        foreach($data as &$value) {
-            if($value instanceof ToArrayInterface) {
+        foreach ($data as &$value) {
+            if ($value instanceof ToArrayInterface) {
                 $value = $value->toArray();
             }
         }
@@ -95,7 +105,8 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface {
     /**
      * @return string
      */
-    public function toJson() {
+    public function toJson()
+    {
         return json_encode($this->toArray());
     }
 }
