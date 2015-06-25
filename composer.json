@@ -21,5 +21,10 @@
         "psr-0": {
             "Flex\\": "src\/"
         }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "FlexTest\\": "tests\/src\/"
+        }
     }
 }

@@ -1,14 +1,16 @@
 <?php
 namespace FlexTest\Data;
 
-use Flex\Data\AbstractObject;
+use FlexTest\Data\AbstractObjectTest\Object;
+use FlexTest\Data\AbstractObjectTest\User;
 
 /**
  * Class AbstractObjectTest
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
+class AbstractObjectTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var array
@@ -16,25 +18,27 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     private $values;
 
     /**
-     * @var AbstractObjectTest_Object
+     * @var Object
      */
     private $object;
 
     /**
      * @return void
      */
-    public function setUp() {
+    public function setUp()
+    {
         $this->values = array(
             'nickname' => 'foo'
         );
 
-        $this->object = new AbstractObjectTest_Object($this->values);
+        $this->object = new Object($this->values);
     }
 
     /**
      * @test
      */
-    public function test_isDirty() {
+    public function testIsDirty()
+    {
         $this->assertEquals(false, $this->object->isDirty());
         $this->object->setNickname('bar');
         $this->assertEquals(true, $this->object->isDirty());
@@ -46,17 +50,17 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function test_sleep() {
+    public function testSleep()
+    {
         $data = $this->object->__sleep();
-        $this->assertEquals(array(
-            'record'
-        ), $data);
+        $this->assertEquals(array('record'), $data);
     }
 
     /**
      * @test
      */
-    public function test_wakeup() {
+    public function testWakeup()
+    {
         $mockMethods = array(
             'init'
         );
@@ -72,7 +76,8 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @test
      * @expectedException \Exception
      */
-    public function test_getPropertyNotExisting() {
+    public function testGetPropertyNotExisting()
+    {
         $this->object->lastname;
     }
 
@@ -80,21 +85,24 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
      * @test
      * @expectedException \Exception
      */
-    public function test_setPropertyNotExisting() {
+    public function testSetPropertyNotExisting()
+    {
         $this->object->lastname = 'foo';
     }
 
     /**
      * @test
      */
-    public function test_toArray() {
+    public function testToArray()
+    {
         $this->assertEquals($this->values, $this->object->toArray());
     }
 
     /**
      * @test
      */
-    public function test_toArrayWithToArrayInterfaceObject() {
+    public function testToArrayWithToArrayInterfaceObject()
+    {
         $expected = array(
             'name' => 'foo',
             'user' => array(
@@ -102,10 +110,10 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
             )
         );
 
-        $foo = new AbstractObjectTest_User();
+        $foo = new User();
         $foo->setName('foo');
 
-        $bar = new AbstractObjectTest_User();
+        $bar = new User();
         $bar->setName('bar');
 
         $foo->setUser($bar);
@@ -116,7 +124,8 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function test_toJsonWithToJsonInterfaceObject() {
+    public function testToJsonWithToJsonInterfaceObject()
+    {
         $expected = array(
             'name' => 'foo',
             'user' => array(
@@ -125,55 +134,14 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase {
         );
         $expected = json_encode($expected);
 
-        $foo = new AbstractObjectTest_User();
+        $foo = new User();
         $foo->setName('foo');
 
-        $bar = new AbstractObjectTest_User();
+        $bar = new User();
         $bar->setName('bar');
 
         $foo->setUser($bar);
 
         $this->assertEquals($expected, $foo->toJson());
-    }
-}
-
-class AbstractObjectTest_Object extends AbstractObject {
-
-    /**
-     * @return string
-     */
-    public function getNickname() {
-        return $this->record->nickname;
-    }
-
-    /**
-     * @param string $v
-     */
-    public function setNickname($v) {
-        $this->record->nickname = $v;
-    }
-}
-
-class AbstractObjectTest_User extends AbstractObject {
-
-    /**
-     * @return string
-     */
-    public function getName() {
-        return $this->record->name;
-    }
-
-    /**
-     * @param $name
-     */
-    public function setName($name) {
-        $this->record->name = $name;
-    }
-
-    /**
-     * @param $user
-     */
-    public function setUser($user) {
-        $this->record->user = $user;
     }
 }
