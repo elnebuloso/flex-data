@@ -52,7 +52,7 @@ class EntityGenerator
         $docBlock->setTag(
                  array(
                      'name' => 'author',
-                     'description' => 'elnebuloso/flex-data (Model Generator)'
+                     'description' => 'elnebuloso/flex-data'
                  )
         );
 
@@ -94,8 +94,8 @@ class EntityGenerator
         $class->setAbstract(true);
         $class->setName($this->getClassName('Abstract'));
         $class->setNamespaceName($this->getNamespaceName('AbstractModel'));
-        $class->addUse('Flex\Data\AbstractObject');
-        $class->setExtendedClass('AbstractObject');
+        $class->addUse('Flex\Data\AbstractRecursiveObject');
+        $class->setExtendedClass('AbstractRecursiveObject');
         $class->setDocBlock($docBlock);
         $class->addMethodFromGenerator($method);
 
@@ -124,7 +124,7 @@ class EntityGenerator
         $docBlock->setTag(
                  array(
                      'name' => 'author',
-                     'description' => 'elnebuloso/flex-data (Model Generator)'
+                     'description' => 'elnebuloso/flex-data'
                  )
         );
 
@@ -132,7 +132,7 @@ class EntityGenerator
         $class->setAbstract(true);
         $class->setName($this->getClassName('Abstract', 'Collection'));
         $class->setNamespaceName($this->getNamespaceName('AbstractModel'));
-        $class->addUse('Flex\Data\Collection');
+        $class->addUse('Flex\Collection');
         $class->setExtendedClass('Collection');
         $class->setDocBlock($docBlock);
 
@@ -154,7 +154,7 @@ class EntityGenerator
         $docBlock->setTag(
                  array(
                      'name' => 'author',
-                     'description' => 'elnebuloso/flex-data (Model Generator)'
+                     'description' => 'elnebuloso/flex-data'
                  )
         );
 
@@ -185,7 +185,7 @@ class EntityGenerator
         $docBlock->setTag(
                  array(
                      'name' => 'author',
-                     'description' => 'elnebuloso/flex-data (Model Generator)'
+                     'description' => 'elnebuloso/flex-data'
                  )
         );
 
@@ -215,7 +215,6 @@ class EntityGenerator
     private function getClassName($prepend = null, $append = null)
     {
         $elements = explode('\\', $this->entity->getClassName());
-
         return $prepend . ucfirst(array_pop($elements)) . $append;
     }
 
