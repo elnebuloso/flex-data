@@ -162,10 +162,12 @@ class EntityGenerator
             $fs->mkdir(pathinfo($this->getModelFilename(), PATHINFO_DIRNAME));
         }
 
-        $generator = new FileGenerator();
-        $generator->setClass($class);
-        $generator->setFilename($this->getModelFilename());
-        $generator->write();
+        if (!file_exists($this->getModelFilename())) {
+            $generator = new FileGenerator();
+            $generator->setClass($class);
+            $generator->setFilename($this->getModelFilename());
+            $generator->write();
+        }
     }
 
     /**
@@ -193,10 +195,12 @@ class EntityGenerator
             $fs->mkdir(pathinfo($this->getModelCollectionFilename(), PATHINFO_DIRNAME));
         }
 
-        $generator = new FileGenerator();
-        $generator->setClass($class);
-        $generator->setFilename($this->getModelCollectionFilename());
-        $generator->write();
+        if (!file_exists($this->getModelCollectionFilename())) {
+            $generator = new FileGenerator();
+            $generator->setClass($class);
+            $generator->setFilename($this->getModelCollectionFilename());
+            $generator->write();
+        }
     }
 
     /**

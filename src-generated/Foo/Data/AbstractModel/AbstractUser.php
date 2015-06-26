@@ -27,7 +27,6 @@ abstract class AbstractUser extends AbstractRecursiveObject
           'edited_at' => NULL,
         );
 
-
         return $defaults;
     }
 

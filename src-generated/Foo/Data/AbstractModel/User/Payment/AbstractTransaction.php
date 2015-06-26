@@ -26,7 +26,6 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
           'created_at' => NULL,
           'edited_at' => NULL,
         );
-
         $defaults['created_at'] = new \DateTime('2014-10-23 00:00:00');
 
         return $defaults;
