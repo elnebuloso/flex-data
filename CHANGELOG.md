@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.4.0
+
+- added new AbstractRecursiveObject holding multidimensional records
+
 ## 2.3.3, 2.3.4
 
 - PSR1, PSR2 Coding Standard
