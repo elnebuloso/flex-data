@@ -51,7 +51,7 @@ class FieldGenerator
         $method = new MethodGenerator();
         $method->setName('set' . ucfirst($this->field->getPhpName()));
         $method->setParameter($parameter);
-        $method->setBody('$this->record->' . $this->field->getName() . ' = $' . $this->field->getPhpName() . ';');
+        $method->setBody('$this->setRecordValue(\'' . $this->field->getName() . '\', $' . $this->field->getPhpName() . ');');
         $method->setDocBlock($docBlock);
 
         return $method;
@@ -70,7 +70,7 @@ class FieldGenerator
 
         $method = new MethodGenerator();
         $method->setName('get' . ucfirst($this->field->getPhpName()));
-        $method->setBody('return $this->record->' . $this->field->getName() . ';');
+        $method->setBody('return $this->getRecordValue(\'' . $this->field->getName() . '\');');
         $method->setDocBlock($docBlock);
 
         return $method;

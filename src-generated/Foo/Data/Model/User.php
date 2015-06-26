@@ -5,7 +5,7 @@ namespace Foo\Data\Model;
 use Foo\Data\AbstractModel\AbstractUser;
 
 /**
- * @author elnebuloso/flex-data (Model Generator)
+ * @author elnebuloso/flex-data
  */
 class User extends AbstractUser
 {

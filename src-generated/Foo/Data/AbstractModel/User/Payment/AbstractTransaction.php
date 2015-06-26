@@ -5,15 +5,15 @@ namespace Foo\Data\AbstractModel\User\Payment;
 use Flex\Data\AbstractRecursiveObject;
 
 /**
- * @author elnebuloso/flex-data (Model Generator)
+ * @author elnebuloso/flex-data
  */
 abstract class AbstractTransaction extends AbstractRecursiveObject
 {
 
     /**
-     * @param array $data
+     * @return array
      */
-    public function __construct(array $data = array())
+    public function getRecordDefaults()
     {
         $defaults = array (
           'id' => 123,
@@ -29,8 +29,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
 
         $defaults['created_at'] = new \DateTime('2014-10-23 00:00:00');
 
-        $data = array_merge($defaults, $data);
-        parent::__construct($data);
+        return $defaults;
     }
 
     /**
@@ -38,7 +37,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setId($id)
     {
-        $this->record->id = $id;
+        $this->setRecordValue('id', $id);
     }
 
     /**
@@ -46,7 +45,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getId()
     {
-        return $this->record->id;
+        return $this->getRecordValue('id');
     }
 
     /**
@@ -54,7 +53,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setFoo($foo)
     {
-        $this->record->foo = $foo;
+        $this->setRecordValue('foo', $foo);
     }
 
     /**
@@ -62,7 +61,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getFoo()
     {
-        return $this->record->foo;
+        return $this->getRecordValue('foo');
     }
 
     /**
@@ -70,7 +69,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setBar($bar)
     {
-        $this->record->bar = $bar;
+        $this->setRecordValue('bar', $bar);
     }
 
     /**
@@ -78,7 +77,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getBar()
     {
-        return $this->record->bar;
+        return $this->getRecordValue('bar');
     }
 
     /**
@@ -86,7 +85,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setBaz($baz)
     {
-        $this->record->baz = $baz;
+        $this->setRecordValue('baz', $baz);
     }
 
     /**
@@ -94,7 +93,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getBaz()
     {
-        return $this->record->baz;
+        return $this->getRecordValue('baz');
     }
 
     /**
@@ -102,7 +101,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setBuz($buz)
     {
-        $this->record->buz = $buz;
+        $this->setRecordValue('buz', $buz);
     }
 
     /**
@@ -110,7 +109,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getBuz()
     {
-        return $this->record->buz;
+        return $this->getRecordValue('buz');
     }
 
     /**
@@ -118,7 +117,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setBiz($biz)
     {
-        $this->record->biz = $biz;
+        $this->setRecordValue('biz', $biz);
     }
 
     /**
@@ -126,7 +125,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getBiz()
     {
-        return $this->record->biz;
+        return $this->getRecordValue('biz');
     }
 
     /**
@@ -134,7 +133,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setBoz($boz)
     {
-        $this->record->boz = $boz;
+        $this->setRecordValue('boz', $boz);
     }
 
     /**
@@ -142,7 +141,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getBoz()
     {
-        return $this->record->boz;
+        return $this->getRecordValue('boz');
     }
 
     /**
@@ -150,7 +149,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->record->created_at = $createdAt;
+        $this->setRecordValue('created_at', $createdAt);
     }
 
     /**
@@ -158,7 +157,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getCreatedAt()
     {
-        return $this->record->created_at;
+        return $this->getRecordValue('created_at');
     }
 
     /**
@@ -166,7 +165,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function setEditedAt(\DateTime $editedAt)
     {
-        $this->record->edited_at = $editedAt;
+        $this->setRecordValue('edited_at', $editedAt);
     }
 
     /**
@@ -174,7 +173,7 @@ abstract class AbstractTransaction extends AbstractRecursiveObject
      */
     public function getEditedAt()
     {
-        return $this->record->edited_at;
+        return $this->getRecordValue('edited_at');
     }
 
 

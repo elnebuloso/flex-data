@@ -5,11 +5,10 @@ use Flex\Data\Generator\Entity;
 use Flex\Data\Generator\Entity\Field;
 use Symfony\Component\Filesystem\Filesystem;
 use Zend\Code\Generator\ClassGenerator;
-use Zend\Code\Generator\DocBlock\Tag\ParamTag;
+use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
 use Zend\Code\Generator\DocBlockGenerator;
 use Zend\Code\Generator\FileGenerator;
 use Zend\Code\Generator\MethodGenerator;
-use Zend\Code\Generator\ParameterGenerator;
 
 /**
  * Class EntityGenerator
@@ -48,23 +47,18 @@ class EntityGenerator
      */
     public function generateAbstractModel()
     {
-        $docBlock = new DocBlockGenerator();
-        $docBlock->setTag(
-                 array(
-                     'name' => 'author',
-                     'description' => 'elnebuloso/flex-data'
-                 )
+        $tag = array(
+            'name' => 'author',
+            'description' => 'elnebuloso/flex-data'
         );
 
-        $parameter = new ParameterGenerator();
-        $parameter->setName('data');
-        $parameter->setType('array');
-        $parameter->setDefaultValue(array());
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setTag($tag);
 
+        // create method getRecordDefaults
         $entityFields = $this->entity->getFields();
         $methodContent = array();
         $methodContent[] = '$defaults = ' . var_export($entityFields->getDefaults(), true) . ';';
-        $methodContent[] = null;
 
         foreach ($this->entity->getFields() as $field) {
             /** @var Field $field */
@@ -74,22 +68,20 @@ class EntityGenerator
         }
 
         $methodContent[] = null;
-        $methodContent[] = '$data = array_merge($defaults, $data);';
-        $methodContent[] = 'parent::__construct($data);';
+        $methodContent[] = 'return $defaults;';
 
-        $methodDocBlockTag = new ParamTag();
+        $methodDocBlockTag = new ReturnTag();
         $methodDocBlockTag->setTypes('array');
-        $methodDocBlockTag->setVariableName('data');
 
         $methodDocBlock = new DocBlockGenerator();
         $methodDocBlock->setTag($methodDocBlockTag);
 
         $method = new MethodGenerator();
-        $method->setName('__construct');
-        $method->setParameter($parameter);
+        $method->setName('getRecordDefaults');
         $method->setBody(implode(PHP_EOL, $methodContent));
         $method->setDocBlock($methodDocBlock);
 
+        // create class
         $class = new ClassGenerator();
         $class->setAbstract(true);
         $class->setName($this->getClassName('Abstract'));
@@ -120,13 +112,13 @@ class EntityGenerator
      */
     public function generateAbstractModelCollection()
     {
-        $docBlock = new DocBlockGenerator();
-        $docBlock->setTag(
-                 array(
-                     'name' => 'author',
-                     'description' => 'elnebuloso/flex-data'
-                 )
+        $tag = array(
+            'name' => 'author',
+            'description' => 'elnebuloso/flex-data'
         );
+
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setTag($tag);
 
         $class = new ClassGenerator();
         $class->setAbstract(true);
@@ -150,13 +142,13 @@ class EntityGenerator
      */
     public function generateModel()
     {
-        $docBlock = new DocBlockGenerator();
-        $docBlock->setTag(
-                 array(
-                     'name' => 'author',
-                     'description' => 'elnebuloso/flex-data'
-                 )
+        $tag = array(
+            'name' => 'author',
+            'description' => 'elnebuloso/flex-data'
         );
+
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setTag($tag);
 
         $class = new ClassGenerator();
         $class->setName($this->getClassName(null));
@@ -181,13 +173,13 @@ class EntityGenerator
      */
     public function generateModelCollection()
     {
-        $docBlock = new DocBlockGenerator();
-        $docBlock->setTag(
-                 array(
-                     'name' => 'author',
-                     'description' => 'elnebuloso/flex-data'
-                 )
+        $tag = array(
+            'name' => 'author',
+            'description' => 'elnebuloso/flex-data'
         );
+
+        $docBlock = new DocBlockGenerator();
+        $docBlock->setTag($tag);
 
         $class = new ClassGenerator();
         $class->setName($this->getClassName(null, 'Collection'));
@@ -215,6 +207,7 @@ class EntityGenerator
     private function getClassName($prepend = null, $append = null)
     {
         $elements = explode('\\', $this->entity->getClassName());
+
         return $prepend . ucfirst(array_pop($elements)) . $append;
     }
 
