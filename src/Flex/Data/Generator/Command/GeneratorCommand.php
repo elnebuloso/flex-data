@@ -37,7 +37,7 @@ class GeneratorCommand extends Command
     /**
      * @var string
      */
-    protected $xmlFileDefault = '.flex/data-models.xml';
+    protected $xmlFileDefault = '.flex-data/schema.xml';
 
     /**
      * @var SimpleXMLElement
@@ -105,7 +105,7 @@ class GeneratorCommand extends Command
     {
         $generator = new ModelGenerator();
         $generator->setNamespace((string) $this->xml->attributes()['namespace']);
-        $generator->setTarget(dirname($this->xmlFile) . '/' . (string) $this->xml->attributes()['target']);
+        $generator->setTarget((string) $this->xml->attributes()['target']);
 
         foreach ($this->xml->entity as $entityNode) {
             /** @var SimpleXMLElement $entityNode */
