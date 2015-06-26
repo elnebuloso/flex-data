@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.0
+
+- added Model Generator
+
 ## 2.4.0
 
 - added new AbstractRecursiveObject holding multidimensional records
