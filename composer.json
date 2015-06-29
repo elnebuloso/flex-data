@@ -18,7 +18,7 @@
         "elnebuloso\/flex-commons": "~2.0"
     },
     "suggest": {
-        "elnebuloso\/flex-data-generator": "Using Bundler View Plugins"
+        "elnebuloso\/flex-data-generator": "Generate Data Models"
     },
     "autoload": {
         "psr-0": {
