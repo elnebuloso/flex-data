@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.6.0
+
+- moved generator to flex-data-generator
+- suggest for flex-data-generator to composer json
+
 ## 2.5.0
 
 - added Model Generator

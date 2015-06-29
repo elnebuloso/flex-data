@@ -1,1 +1,0 @@
-# test directory for generated classes by model generator
