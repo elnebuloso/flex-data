@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.7.0
+
+- added toArray onto AbstractRecursiveObject
+- added toJson onto AbstractRecursiveObject
+
 ## 2.6.0
 
 - moved generator to flex-data-generator

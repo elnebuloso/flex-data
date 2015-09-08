@@ -10,7 +10,6 @@ use Flex\Data\AbstractObject;
  */
 class User extends AbstractObject
 {
-
     /**
      * @return string
      */

@@ -12,7 +12,6 @@ use Flex\ToJsonInterface;
  */
 abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
 {
-
     /**
      * @var Record
      */

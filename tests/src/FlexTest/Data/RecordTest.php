@@ -10,7 +10,6 @@ use Flex\Data\Record;
  */
 class RecordTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @test
      */

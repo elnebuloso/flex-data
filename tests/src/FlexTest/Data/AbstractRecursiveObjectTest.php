@@ -10,7 +10,6 @@ use FlexTest\Data\AbstractRecursiveObjectTest\User;
  */
 class AbstractRecursiveObjectTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @var User
      */
@@ -89,5 +88,53 @@ class AbstractRecursiveObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Berlin', $this->user->getLocationCity());
         $this->user->setRecordValue('location/city', '123456789');
         $this->assertEquals('123456789', $this->user->getLocationCity());
+    }
+
+    /**
+     * @test
+     */
+    public function testToArray()
+    {
+        $expected = array(
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'group'     => array(
+                'name' => 'group1'
+            ),
+            'location'  => array(
+                'city' => 'Berlin',
+                'geo'  => array(
+                    'lat' => '51.0000',
+                    'lon' => '8.0000'
+                )
+            )
+        );
+
+        $this->user = new User();
+        $this->assertEquals($expected, $this->user->toArray());
+    }
+
+    /**
+     * @test
+     */
+    public function testToJson()
+    {
+        $expected = array(
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'group'     => array(
+                'name' => 'group1'
+            ),
+            'location'  => array(
+                'city' => 'Berlin',
+                'geo'  => array(
+                    'lat' => '51.0000',
+                    'lon' => '8.0000'
+                )
+            )
+        );
+
+        $this->user = new User();
+        $this->assertEquals(json_encode($expected), $this->user->toJson());
     }
 }

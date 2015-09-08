@@ -11,7 +11,6 @@ use FlexTest\Data\AbstractObjectTest\User;
  */
 class AbstractObjectTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @var array
      */

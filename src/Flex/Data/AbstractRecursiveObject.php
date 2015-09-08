@@ -1,14 +1,16 @@
 <?php
 namespace Flex\Data;
 
+use Flex\ToArrayInterface;
+use Flex\ToJsonInterface;
+
 /**
  * Class AbstractRecursiveObject
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-abstract class AbstractRecursiveObject
+abstract class AbstractRecursiveObject implements ToArrayInterface, ToJsonInterface
 {
-
     /**
      * @var array
      */
@@ -59,6 +61,30 @@ abstract class AbstractRecursiveObject
     /**
      * @return array
      */
+    public function toArray()
+    {
+        $data = $this->record;
+
+        foreach ($data as &$value) {
+            if ($value instanceof ToArrayInterface) {
+                $value = $value->toArray();
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * @return string
+     */
+    public function toJson()
+    {
+        return json_encode($this->toArray());
+    }
+
+    /**
+     * @return array
+     */
     abstract public function getRecordDefaults();
 
     /**
@@ -75,7 +101,7 @@ abstract class AbstractRecursiveObject
                 $array[$key] = array();
             }
 
-            $array = & $array[$key];
+            $array = &$array[$key];
         }
 
         $array[$last] = $value;

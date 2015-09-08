@@ -10,7 +10,6 @@ use stdClass;
  */
 class Record extends stdClass
 {
-
     /**
      * @var array
      */

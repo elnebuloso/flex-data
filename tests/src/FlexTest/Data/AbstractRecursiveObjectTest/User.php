@@ -10,7 +10,6 @@ use Flex\Data\AbstractRecursiveObject;
  */
 class User extends AbstractRecursiveObject
 {
-
     /**
      * @return array
      */
@@ -18,10 +17,11 @@ class User extends AbstractRecursiveObject
     {
         return array(
             'firstname' => 'John',
-            'lastname' => 'Doe',
-            'location' => array(
+            'lastname'  => 'Doe',
+            'group'     => new Group(),
+            'location'  => array(
                 'city' => 'Berlin',
-                'geo' => array(
+                'geo'  => array(
                     'lat' => '51.0000',
                     'lon' => '8.0000'
                 )
