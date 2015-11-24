@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 3.0.0
+
+- no more support php 5.3
+
 ## 2.7.0
 
 - added toArray onto AbstractRecursiveObject

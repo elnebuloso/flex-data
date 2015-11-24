@@ -26,9 +26,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithData()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $this->assertEquals('foo', $storage->nickname);
     }
@@ -47,9 +47,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorWithDataDirty()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $this->assertEquals(false, $storage->isDirty());
     }
@@ -59,9 +59,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsDirty()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $this->assertEquals(false, $storage->isDirty());
         $storage->nickname = 'bar';
@@ -74,9 +74,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetNotExistingProperty()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $value = $storage->firstname;
         $this->assertEquals(null, $value);
@@ -87,12 +87,12 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetData()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $data = $storage->getData();
-        $this->assertEquals(array('nickname' => 'foo'), $data);
+        $this->assertEquals(['nickname' => 'foo'], $data);
     }
 
     /**
@@ -100,16 +100,16 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetChanges()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $changes = $storage->getChanges();
-        $this->assertEquals(array(), $changes);
+        $this->assertEquals([], $changes);
 
         $storage->nickname = 'bar';
         $changes = $storage->getChanges();
-        $this->assertEquals(array('nickname' => 'bar'), $changes);
+        $this->assertEquals(['nickname' => 'bar'], $changes);
     }
 
     /**
@@ -117,9 +117,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetValue()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $data = $storage->getValue('nickname');
         $this->assertEquals('foo', $data);
@@ -130,9 +130,9 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetValueNotExisting()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $data = $storage->getValue('firstname');
         $this->assertEquals(null, $data);
@@ -143,18 +143,18 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDirty()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $storage->nickname = 'bar';
 
         $changes = $storage->getChanges();
-        $this->assertEquals(array('nickname' => 'bar'), $changes);
+        $this->assertEquals(['nickname' => 'bar'], $changes);
 
         $storage->setDirty(false);
         $changes = $storage->getChanges();
-        $this->assertEquals(array(), $changes);
+        $this->assertEquals([], $changes);
     }
 
     /**
@@ -162,12 +162,12 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testSleep()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $data = $storage->__sleep();
-        $this->assertEquals(array('data', 'dirty', 'changes'), $data);
+        $this->assertEquals(['data', 'dirty', 'changes'], $data);
     }
 
     /**
@@ -175,12 +175,12 @@ class RecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnsetProperty()
     {
-        $storage = new Record(array(
-            'nickname' => 'foo'
-        ));
+        $storage = new Record([
+            'nickname' => 'foo',
+        ]);
 
         $storage->unsetProperty('nickname');
 
-        $this->assertEquals(array(), $storage->getData());
+        $this->assertEquals([], $storage->getData());
     }
 }

@@ -13,7 +13,7 @@ class Record extends stdClass
     /**
      * @var array
      */
-    private $data = array();
+    private $data = [];
 
     /**
      * @var bool
@@ -23,7 +23,7 @@ class Record extends stdClass
     /**
      * @var array
      */
-    private $changes = array();
+    private $changes = [];
 
     /**
      * @param array $data
@@ -67,11 +67,11 @@ class Record extends stdClass
      */
     public function __sleep()
     {
-        return array(
+        return [
             'data',
             'dirty',
-            'changes'
-        );
+            'changes',
+        ];
     }
 
     /**
@@ -82,7 +82,7 @@ class Record extends stdClass
         $this->dirty = $dirty;
 
         if (!$dirty) {
-            $this->changes = array();
+            $this->changes = [];
         }
     }
 
@@ -107,7 +107,7 @@ class Record extends stdClass
      */
     public function getChanges()
     {
-        $changes = array();
+        $changes = [];
 
         foreach (array_keys($this->changes) as $id) {
             if (array_key_exists($id, $this->data)) {

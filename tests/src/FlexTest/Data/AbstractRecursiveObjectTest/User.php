@@ -15,18 +15,18 @@ class User extends AbstractRecursiveObject
      */
     public function getRecordDefaults()
     {
-        return array(
+        return [
             'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'group'     => new Group(),
-            'location'  => array(
+            'lastname' => 'Doe',
+            'group' => new Group(),
+            'location' => [
                 'city' => 'Berlin',
-                'geo'  => array(
+                'geo' => [
                     'lat' => '51.0000',
-                    'lon' => '8.0000'
-                )
-            )
-        );
+                    'lon' => '8.0000',
+                ],
+            ],
+        ];
     }
 
     /**

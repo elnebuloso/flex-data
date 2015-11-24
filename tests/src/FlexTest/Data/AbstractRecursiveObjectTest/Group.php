@@ -10,8 +10,8 @@ class Group extends AbstractRecursiveObject
      */
     public function getRecordDefaults()
     {
-        return array(
-            'name' => 'group1'
-        );
+        return [
+            'name' => 'group1',
+        ];
     }
 }

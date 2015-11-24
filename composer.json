@@ -1,5 +1,5 @@
 {
-    "name": "elnebuloso\/flex-data",
+    "name": "elnebuloso/flex-data",
     "type": "library",
     "license": "MIT",
     "description": "data modeling",
@@ -16,20 +16,20 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "elnebuloso\/flex-commons": "~2.0"
+        "php": ">=5.4.0",
+        "elnebuloso/flex-commons": "~3.0"
     },
     "suggest": {
-        "elnebuloso\/flex-data-generator": "Generate Data Models"
+        "elnebuloso/flex-data-generator": "Generate Data Models"
     },
     "autoload": {
         "psr-0": {
-            "Flex\\": "src\/"
+            "Flex\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-0": {
-            "FlexTest\\": "tests\/src\/"
+            "FlexTest\\": "tests/src/"
         }
     }
 }

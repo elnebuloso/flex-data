@@ -19,7 +19,7 @@ abstract class AbstractRecursiveObject implements ToArrayInterface, ToJsonInterf
     /**
      * @param array $record
      */
-    public function __construct(array $record = array())
+    public function __construct(array $record = [])
     {
         $this->record = array_merge($this->getRecordDefaults(), $record);
     }
@@ -98,7 +98,7 @@ abstract class AbstractRecursiveObject implements ToArrayInterface, ToJsonInterf
 
         foreach ($keys as $key) {
             if (!array_key_exists($key, $array) || (array_key_exists($key, $array) && !is_array($array[$key]))) {
-                $array[$key] = array();
+                $array[$key] = [];
             }
 
             $array = &$array[$key];

@@ -95,20 +95,20 @@ class AbstractRecursiveObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testToArray()
     {
-        $expected = array(
+        $expected = [
             'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'group'     => array(
-                'name' => 'group1'
-            ),
-            'location'  => array(
+            'lastname' => 'Doe',
+            'group' => [
+                'name' => 'group1',
+            ],
+            'location' => [
                 'city' => 'Berlin',
-                'geo'  => array(
+                'geo' => [
                     'lat' => '51.0000',
-                    'lon' => '8.0000'
-                )
-            )
-        );
+                    'lon' => '8.0000',
+                ],
+            ],
+        ];
 
         $this->user = new User();
         $this->assertEquals($expected, $this->user->toArray());
@@ -119,20 +119,20 @@ class AbstractRecursiveObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testToJson()
     {
-        $expected = array(
+        $expected = [
             'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'group'     => array(
-                'name' => 'group1'
-            ),
-            'location'  => array(
+            'lastname' => 'Doe',
+            'group' => [
+                'name' => 'group1',
+            ],
+            'location' => [
                 'city' => 'Berlin',
-                'geo'  => array(
+                'geo' => [
                     'lat' => '51.0000',
-                    'lon' => '8.0000'
-                )
-            )
-        );
+                    'lon' => '8.0000',
+                ],
+            ],
+        ];
 
         $this->user = new User();
         $this->assertEquals(json_encode($expected), $this->user->toJson());

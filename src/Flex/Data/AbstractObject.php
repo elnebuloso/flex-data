@@ -20,7 +20,7 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
     /**
      * @param array $data
      */
-    public function __construct(array $data = array())
+    public function __construct(array $data = [])
     {
         $this->record = new Record($data);
         $this->init();
@@ -39,7 +39,7 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
      */
     public function __sleep()
     {
-        return array('record');
+        return ['record'];
     }
 
     /**

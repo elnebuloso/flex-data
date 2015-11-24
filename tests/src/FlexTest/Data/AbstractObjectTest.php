@@ -26,9 +26,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->values = array(
-            'nickname' => 'foo'
-        );
+        $this->values = [
+            'nickname' => 'foo',
+        ];
 
         $this->object = new Object($this->values);
     }
@@ -52,7 +52,7 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
     public function testSleep()
     {
         $data = $this->object->__sleep();
-        $this->assertEquals(array('record'), $data);
+        $this->assertEquals(['record'], $data);
     }
 
     /**
@@ -60,9 +60,9 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testWakeup()
     {
-        $mockMethods = array(
-            'init'
-        );
+        $mockMethods = [
+            'init',
+        ];
 
         $object = $this->getMockBuilder('Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
         $object->expects($this->once())->method('init');
@@ -102,12 +102,12 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testToArrayWithToArrayInterfaceObject()
     {
-        $expected = array(
+        $expected = [
             'name' => 'foo',
-            'user' => array(
-                'name' => 'bar'
-            )
-        );
+            'user' => [
+                'name' => 'bar',
+            ],
+        ];
 
         $foo = new User();
         $foo->setName('foo');
@@ -125,12 +125,12 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testToJsonWithToJsonInterfaceObject()
     {
-        $expected = array(
+        $expected = [
             'name' => 'foo',
-            'user' => array(
-                'name' => 'bar'
-            )
-        );
+            'user' => [
+                'name' => 'bar',
+            ],
+        ];
         $expected = json_encode($expected);
 
         $foo = new User();
