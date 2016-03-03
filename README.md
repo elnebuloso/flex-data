@@ -1,6 +1,7 @@
 # flex-data
 
 [![Build Status](https://travis-ci.org/elnebuloso/flex-data.svg?branch=master)](https://travis-ci.org/elnebuloso/flex-data)
+[![Coverage Status](https://coveralls.io/repos/github/elnebuloso/flex-data/badge.svg?branch=master)](https://coveralls.io/github/elnebuloso/flex-data?branch=master)
 
 ## Requirements
 
