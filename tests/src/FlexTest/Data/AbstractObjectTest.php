@@ -1,15 +1,16 @@
 <?php
-namespace FlexTest\Data;
+namespace elnebuloso\FlexTest\Data;
 
-use FlexTest\Data\AbstractObjectTest\Object;
-use FlexTest\Data\AbstractObjectTest\User;
+use elnebuloso\FlexTest\Data\AbstractObjectTest\Object;
+use elnebuloso\FlexTest\Data\AbstractObjectTest\User;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Class AbstractObjectTest
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class AbstractObjectTest extends \PHPUnit_Framework_TestCase
+class AbstractObjectTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var array
@@ -64,10 +65,10 @@ class AbstractObjectTest extends \PHPUnit_Framework_TestCase
             'init',
         ];
 
-        $object = $this->getMockBuilder('Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
+        $object = $this->getMockBuilder('\elnebuloso\Flex\Data\AbstractObject')->setMethods($mockMethods)->getMockForAbstractClass();
         $object->expects($this->once())->method('init');
 
-        /** @var \Flex\Data\AbstractObject $object */
+        /** @var \elnebuloso\Flex\Data\AbstractObject $object */
         $object->__wakeup();
     }
 

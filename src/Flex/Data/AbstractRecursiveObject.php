@@ -1,15 +1,15 @@
 <?php
-namespace Flex\Data;
+namespace elnebuloso\Flex\Data;
 
-use Flex\ToArrayInterface;
-use Flex\ToJsonInterface;
+use elnebuloso\Flex\HasToArray;
+use elnebuloso\Flex\HasToJson;
 
 /**
  * Class AbstractRecursiveObject
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-abstract class AbstractRecursiveObject implements ToArrayInterface, ToJsonInterface
+abstract class AbstractRecursiveObject implements HasToArray, HasToJson
 {
     /**
      * @var array
@@ -66,7 +66,7 @@ abstract class AbstractRecursiveObject implements ToArrayInterface, ToJsonInterf
         $data = $this->record;
 
         foreach ($data as &$value) {
-            if ($value instanceof ToArrayInterface) {
+            if ($value instanceof HasToArray) {
                 $value = $value->toArray();
             }
         }

@@ -1,5 +1,5 @@
 <?php
-namespace Flex\Data;
+namespace elnebuloso\Flex\Data;
 
 use stdClass;
 

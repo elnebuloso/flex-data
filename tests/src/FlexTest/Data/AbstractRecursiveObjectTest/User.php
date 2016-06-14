@@ -1,7 +1,7 @@
 <?php
-namespace FlexTest\Data\AbstractRecursiveObjectTest;
+namespace elnebuloso\FlexTest\Data\AbstractRecursiveObjectTest;
 
-use Flex\Data\AbstractRecursiveObject;
+use elnebuloso\Flex\Data\AbstractRecursiveObject;
 
 /**
  * Class User

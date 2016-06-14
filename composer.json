@@ -17,19 +17,22 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "elnebuloso/flex-commons": "~3.0"
+        "elnebuloso/flex-commons": "~4.0"
     },
-    "suggest": {
-        "elnebuloso/flex-data-generator": "Generate Data Models"
+    "require-dev": {
+        "satooshi/php-coveralls": "^1.0"
     },
     "autoload": {
-        "psr-0": {
-            "Flex\\": "src/"
+        "psr-4": {
+            "elnebuloso\\Flex\\": "src/Flex/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "FlexTest\\": "tests/src/"
+        "psr-4": {
+            "elnebuloso\\FlexTest\\": "tests/src/FlexTest/"
         }
+    },
+    "suggest": {
+        "elnebuloso/flex-data-generator": "Generate Data Models"
     }
 }

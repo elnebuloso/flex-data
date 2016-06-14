@@ -1,16 +1,16 @@
 <?php
-namespace Flex\Data;
+namespace elnebuloso\Flex\Data;
 
+use elnebuloso\Flex\HasToArray;
+use elnebuloso\Flex\HasToJson;
 use Exception;
-use Flex\ToArrayInterface;
-use Flex\ToJsonInterface;
 
 /**
  * Class AbstractObject
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
+abstract class AbstractObject implements HasToArray, HasToJson
 {
     /**
      * @var Record
@@ -93,7 +93,7 @@ abstract class AbstractObject implements ToArrayInterface, ToJsonInterface
         $data = $this->record->getData();
 
         foreach ($data as &$value) {
-            if ($value instanceof ToArrayInterface) {
+            if ($value instanceof HasToArray) {
                 $value = $value->toArray();
             }
         }

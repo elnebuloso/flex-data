@@ -1,14 +1,15 @@
 <?php
-namespace FlexTest\Data;
+namespace elnebuloso\FlexTest\Data;
 
-use Flex\Data\Record;
+use elnebuloso\Flex\Data\Record;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Class RecordTest
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class RecordTest extends \PHPUnit_Framework_TestCase
+class RecordTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @test

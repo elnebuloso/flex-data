@@ -1,7 +1,7 @@
 <?php
-namespace FlexTest\Data\AbstractObjectTest;
+namespace elnebuloso\FlexTest\Data\AbstractObjectTest;
 
-use Flex\Data\AbstractObject;
+use elnebuloso\Flex\Data\AbstractObject;
 
 /**
  * Class User

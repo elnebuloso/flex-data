@@ -1,14 +1,15 @@
 <?php
-namespace FlexTest\Data;
+namespace elnebuloso\FlexTest\Data;
 
-use FlexTest\Data\AbstractRecursiveObjectTest\User;
+use elnebuloso\FlexTest\Data\AbstractRecursiveObjectTest\User;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Class AbstractRecursiveObjectTest
  *
  * @author Jeff Tunessen <jeff.tunessen@gmail.com>
  */
-class AbstractRecursiveObjectTest extends \PHPUnit_Framework_TestCase
+class AbstractRecursiveObjectTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var User
