@@ -30,7 +30,7 @@ class Record extends stdClass
      */
     public function __construct(array $data = null)
     {
-        if (!is_null($data)) {
+        if ($data !== null) {
             $this->data = $data;
         }
     }
